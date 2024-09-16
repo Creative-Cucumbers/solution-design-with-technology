@@ -1,6 +1,7 @@
 # Design Thinking for Technology Solution
 
 第3-4回 Day1  
+
 デザイン思考を活用したソリューションデザインの全体感を理解する  
 ペルソナを活用したユーザー理解の方法を体験する
 
