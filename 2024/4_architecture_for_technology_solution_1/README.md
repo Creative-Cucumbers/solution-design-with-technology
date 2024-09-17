@@ -34,7 +34,7 @@
 ```mermaid
 graph LR
     A[1.市場/ドメインの理解] --> B[2.問題の特定]
-    B --> C[<b>3.解決策の策定</b>]
+    B --> C[<b>3.解決策の決定</b>]
     C --> D[4.検証]
     
 style C fill:#f96,stroke:#333,stroke-width:2px;
@@ -43,7 +43,7 @@ style D fill:#f96,stroke:#333,stroke-width:2px;
 
 ```
 
-### 3.3.2 解決策定のプロセス
+### 3.3.2 解決策決定のプロセス
 
 1. ユーザーレベルでの解決策
    1. アイディアの発散
