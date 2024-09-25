@@ -95,7 +95,10 @@
 
 
 
+![図2. 生成AI製品・サービスを開発、提供する際の行動例](https://www.ipa.go.jp/pressrelease/2024/eid2eo0000007yzx-img/press20240708-22.png)
 
+<div style="text-align: center;">    <a href="https://www.ipa.go.jp/pressrelease/2024/press20240708.html">引用: 生成AI製品・サービスを開発、提供する際の行動例
+</a> </div>
 
 
 
@@ -217,6 +220,13 @@ AI時代において、単にコーディングを行うだけでなく、AIを�
 
 
 ![Technology History](https://www.horsesforsources.com/wp-content/uploads/2022/12/Three-triggers-of-biz-ops-arbitrage.jpg)
+
+
+
+![表 2022年11月以降に起きた生成AIを巡る動き](https://cdn-xtech.nikkei.com/atcl/nxt/mag/nc/18/061400361/061400001/02.jpg?__scale=w:500,h:429&_sh=0540f40150)
+
+<div style="text-align: center;">    <a href="https://xtech.nikkei.com/atcl/nxt/mag/nc/18/061400361/061400001/">表 2022年11月以降に起きた生成AIを巡る動き
+</a> </div>
 
 
 
