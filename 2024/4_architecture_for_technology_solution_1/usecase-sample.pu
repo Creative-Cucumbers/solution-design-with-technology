@@ -1,0 +1,30 @@
+@startuml
+left to right direction
+actor "ユーザー" as user
+actor "駐車場管理者" as admin
+
+rectangle "パーキングロットシステム" {
+  usecase "駐車スペースを検索する" as UC1
+  usecase "駐車スペースの利用可能時間と料金を確認する" as UC2
+  usecase "ナビゲーションで駐車場を提案する" as UC3
+  usecase "駐車スペースを予約する" as UC4
+  usecase "バレーパーキングを依頼する" as UC5
+  usecase "指定場所で車を受け取る" as UC6
+  usecase "駐車料金を支払う" as UC7
+  usecase "駐車場の空き状況を確認する" as UC8
+  usecase "駐車場の料金設定を変更する" as UC9
+  usecase "レビューを投稿する" as UC10
+}
+
+user --> UC1
+user --> UC2
+user --> UC3
+user --> UC4
+user --> UC5
+user --> UC6
+user --> UC7
+user --> UC10
+
+admin --> UC8
+admin --> UC9
+@enduml
