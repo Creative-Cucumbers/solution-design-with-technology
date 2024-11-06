@@ -18,6 +18,6 @@
 
 ### 5. [ソリューションの開発](./5_architecture_for_technology_solution_2)
 
-### 6. 
+### 6. [ケーススタディ①ソリューションデザイン](./6_case_study_1)
 
 ### 7. 
