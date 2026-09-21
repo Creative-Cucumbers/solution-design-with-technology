@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ソリューション基礎 — 2026</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: #151515; color: #fff; font-family: system-ui, sans-serif; }
+    body { display: grid; grid-template-rows: minmax(0, 1fr) auto; height: 100dvh; }
+    main { min-height: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    #slide { width: 100%; height: 100%; object-fit: contain; }
+    nav { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 10px; flex-wrap: wrap; background: #222; }
+    button, input { font: inherit; color: inherit; background: #333; border: 1px solid #777; border-radius: 6px; padding: 7px 12px; }
+    button { cursor: pointer; }
+    button:disabled { opacity: .35; cursor: default; }
+    input { width: 4.5em; text-align: center; }
+    :focus-visible { outline: 3px solid #9bcaff; outline-offset: 3px; }
+    .help { font-size: 12px; color: #ccc; }
+    #error { position: absolute; background: #222; padding: 20px; }
+    [hidden] { display: none !important; }
+    body.presentation { grid-template-rows: minmax(0, 1fr); }
+    body.presentation nav { display: none; }
+    @media (max-width: 600px) { .help { display: none; } nav { gap: 6px; } }
+  </style>
+</head>
+<body>
+  <main aria-label="講義スライド">
+    <img id="slide" src="solution_design_with_technology_final_53_images/01.png" alt="ソリューション基礎 スライド1" draggable="false">
+    <p id="error" role="alert" hidden>画像を読み込めません。HTMLと画像フォルダの配置を確認してください。</p>
+  </main>
+  <nav aria-label="スライド操作">
+    <button id="prev" type="button" aria-label="前のスライド">← 前へ</button>
+    <label><input id="page" type="number" min="1" max="53" value="1" aria-label="スライド番号"> / 53</label>
+    <button id="next" type="button" aria-label="次のスライド">次へ →</button>
+    <button id="fullscreen" type="button">全画面</button>
+    <span class="help">← → / Space：移動 · Home / End：最初 / 最後 · F：全画面 · H：操作バー</span>
+    <span id="status" role="status" aria-live="polite" hidden></span>
+  </nav>
+  <noscript>ページ切り替えにはJavaScriptを有効にしてください。</noscript>
+  <script>
+    'use strict';
+    const total = 53;
+    const slide = document.getElementById('slide');
+    const page = document.getElementById('page');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const fullscreen = document.getElementById('fullscreen');
+    const error = document.getElementById('error');
+    let current = 1;
+    const source = n => `solution_design_with_technology_final_53_images/${String(n).padStart(2, '0')}.png`;
+    function show(n) {
+      current = Math.max(1, Math.min(total, Math.trunc(Number(n)) || 1));
+      error.hidden = true;
+      slide.src = source(current);
+      slide.alt = `ソリューション基礎 スライド${current} / ${total}`;
+      page.value = current;
+      prev.disabled = current === 1;
+      next.disabled = current === total;
+      document.title = `${current} / ${total} — ソリューション基礎 2026`;
+      if (location.hash !== `#${current}`) location.replace(`#${current}`);
+      if (current < total) { const preload = new Image(); preload.src = source(current + 1); }
+    }
+    slide.addEventListener('error', () => { error.hidden = false; });
+    slide.addEventListener('load', () => { error.hidden = true; });
+    prev.addEventListener('click', () => show(current - 1));
+    next.addEventListener('click', () => show(current + 1));
+    page.addEventListener('change', () => show(page.value));
+    window.addEventListener('hashchange', () => show(location.hash.slice(1)));
+    async function toggleFullscreen() {
+      try {
+        if (document.fullscreenElement) await document.exitFullscreen();
+        else if (document.documentElement.requestFullscreen) await document.documentElement.requestFullscreen();
+        else document.body.classList.toggle('presentation');
+      } catch (_) { document.body.classList.toggle('presentation'); }
+    }
+    fullscreen.addEventListener('click', toggleFullscreen);
+    document.addEventListener('fullscreenchange', () => {
+      document.body.classList.toggle('presentation', Boolean(document.fullscreenElement));
+      fullscreen.textContent = document.fullscreenElement ? '全画面を終了' : '全画面';
+    });
+    document.addEventListener('keydown', event => {
+      if (event.target.matches('input, textarea, select') || event.ctrlKey || event.metaKey || event.altKey) return;
+      if (event.target.closest('button') && (event.key === ' ' || event.key === 'Enter')) return;
+      switch (event.key) {
+        case 'ArrowRight': case 'ArrowDown': case 'PageDown': show(current + 1); break;
+        case ' ': show(current + (event.shiftKey ? -1 : 1)); break;
+        case 'ArrowLeft': case 'ArrowUp': case 'PageUp': show(current - 1); break;
+        case 'Home': show(1); break;
+        case 'End': show(total); break;
+        case 'f': case 'F': toggleFullscreen(); break;
+        case 'h': case 'H': document.body.classList.toggle('presentation'); break;
+        case 'Escape': document.body.classList.remove('presentation'); break;
+        default: return;
+      }
+      event.preventDefault();
+    });
+    let touchStart = null;
+    slide.addEventListener('touchstart', event => {
+      if (event.touches.length === 1) touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+      else touchStart = null;
+    }, { passive: true });
+    slide.addEventListener('touchend', event => {
+      if (!touchStart) return;
+      const dx = event.changedTouches[0].clientX - touchStart.x;
+      const dy = event.changedTouches[0].clientY - touchStart.y;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(current + (dx < 0 ? 1 : -1));
+      touchStart = null;
+    }, { passive: true });
+    show(location.hash.slice(1));
+  </script>
+</body>
+</html>
