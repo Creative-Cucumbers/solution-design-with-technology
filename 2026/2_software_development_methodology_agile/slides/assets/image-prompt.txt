@@ -1,0 +1,5 @@
+Mode: built-in image_gen, new generation, photo asset only.
+
+Use case: photorealistic-natural. Asset type: editorial photograph for a Japanese university lecture slide, cropped on the right half of a 16:9 cover. Create a wide 3:2 black-and-white documentary photograph of four adult Japanese university design students collaboratively prototyping around a wooden studio table with laptops, sheets of paper, small sticky notes and a delicate spaghetti tower with a marshmallow. Candid, thoughtful interaction, hands pointing at prototype, side view, modern art school studio tall windows behind, strong sunlight and deep shadows, analog grain, high contrast fine art newspaper photo, no posed smiles, no visible readable text, no logos. Subjects primarily centered and right, table fills lower half. Realistic hands and faces. No typography, no graphic overlays, no slide layout. Save this as an asset available to the workspace.
+
+Output asset: workshop.jpg (JPEG conversion of generated PNG).

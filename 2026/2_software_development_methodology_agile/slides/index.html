@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>第2回 ソフトウェア開発方法論 — スライド</title><link rel="stylesheet" href="styles.css"></head><body>
+<main id="stage" aria-label="第2回の講義スライド"><div id="deck"><section class="slide cover" data-title="つくり方を、デザインする。" aria-label="スライド1：つくり方を、デザインする。"><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">01 / 60</div>
+<div class="cover-black"></div><img class="cover-photo" src="assets/workshop.jpg" alt="机を囲んで試作に取り組む学生たちのイメージ写真">
+<div class="cover-copy"><div class="eyebrow">LECTURE 02 — SOFTWARE DEVELOPMENT</div><h1>つくり方を、<br><mark>デザインする。</mark></h1><p class="cover-sub">ソフトウェア開発方法論と<br>アジャイルワークショップ</p><div class="small-rule"></div><p class="body-copy">動くものをつくる。<br>確かめる。話す。つくり直す。<br><strong>その進め方も、デザインできる。</strong></p></div>
+<div class="note cover-note yellow">ひとりでつくる。<br>みんなで、よくする。<svg class="scribble" viewBox="0 0 200 22"><path d="M4 13 Q80 4 190 11 M15 20 Q95 10 177 17"/></svg></div>
+<div class="cover-caption">MAKE → CHECK → LEARN</div><div class="cover-course">第2回 ／ 3限・4限<br>小島 弘誉</div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+
+<section class="slide download" data-title="まず、ダウンロードを始めよう。" aria-label="スライド2：まず、ダウンロードを始めよう。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">02 / 60</div>
+<div class="eyebrow at" style="left:76px;top:124px">01 / GET READY</div><h1 class="at" style="left:76px;top:175px">まず、<br><mark>ダウンロード。</mark></h1>
+<p class="body-copy at" style="left:82px;top:437px">待っている間に、今日の話を。<br>いま進めるのは、<strong>手順1〜2だけ。</strong></p>
+<a class="ink-link at" style="left:82px;top:577px" href="https://antigravity.google/download#antigravity-ide" target="_blank" rel="noopener">antigravity.google/download ↗</a>
+<p class="caption at" style="left:82px;top:638px">リンクはSlackの授業チャンネルから。<br>詳しい操作は <a href="../setup-antigravity-ide.md">セットアップ手順書 ↗</a></p>
+<div class="download-paper"><span class="tape"></span><p class="eyebrow">今日、使う開発環境</p><h2>Antigravity<br><span class="hand">IDE Standalone</span></h2><div class="selected-label">✓ この名前を探す</div><hr><div class="os-row"><div><b>Windows</b><span>x64 / ARM64</span></div><div><b>Mac</b><span>Apple Silicon / Intel</span></div></div><p class="caption">手順1でPCの種類を確認 → 合うものを選ぶ</p></div>
+<div class="note yellow download-note">「Antigravity 2.0」ではなく<br><strong>IDE Standalone</strong> を選ぼう。</div>
+<svg class="doodle at" style="left:621px;top:432px;width:170px;height:155px" viewBox="0 0 170 155"><path d="M10 120 Q100 140 130 20 M103 38 L131 16 L145 53"/></svg>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+
+<section class="slide roadmap" data-title="7回の授業で、つくる力をつなぐ。" aria-label="スライド3：7回の授業で、つくる力をつなぐ。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">03 / 60</div>
+<div class="eyebrow at" style="left:76px;top:125px">02 / THE BIG PICTURE</div><h1 class="at" style="left:76px;top:168px;font-size:72px">7回の授業で、<br><mark>つくる力をつなぐ。</mark></h1>
+<p class="body-copy at" style="left:78px;top:385px;font-size:25px">問いから始めて、仲間と形にする。<br>今日は、その<strong>「進め方」</strong>を学ぶ。</p>
+<div class="note yellow at" style="left:1130px;top:132px;transform:rotate(6deg);width:350px;font-size:24px">今日の学びを、<br>第4回のチーム制作へ。</div>
+<div class="route-line"></div>
+<div class="route r1"><b>01</b><h3>ソリューション<br>基礎</h3><p>何を解決する？</p><span class="hand">Why?</span></div>
+<div class="route r2"><span class="you-are">TODAY ↓</span><b>02</b><h3>開発方法論<br>アジャイル</h3><p>どう進める？</p><span class="hand">How we work</span></div>
+<div class="route r3"><b>03</b><h3>デザイン思考<br>ユーザー理解</h3><p>誰のため？</p><span class="hand">For whom?</span></div>
+<div class="route r4"><b>04</b><h3>ソリューション設計<br>プロトタイピング</h3><p>小さく形にする</p><span class="hand">Make it!</span></div>
+<div class="route r5"><b>05</b><h3>対話と問い<br>価値のデザイン</h3><p>大切なことは？</p><span class="hand">Find value</span></div>
+<div class="route r6"><b>06</b><h3>ケーススタディ<br>デザイン・演習</h3><p>学びを組み合わせる</p><span class="hand">Connect</span></div>
+<div class="route r7"><b>07</b><h3>ケーススタディ<br>制作・成果発表</h3><p>伝えて、確かめる</p><span class="hand">Share!</span></div>
+<p class="caption at" style="left:360px;top:839px">全7回 ／ 1回につき2コマ・各100分　　※上の番号は授業の実施順です。</p>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+
+<section class="slide before-after" data-title="ひとりでつくる。その先へ。" aria-label="スライド4：ひとりでつくる。その先へ。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">04 / 60</div>
+<div class="eyebrow at" style="left:76px;top:125px">03 / LOOK BACK → MOVE FORWARD</div><h1 class="at" style="left:76px;top:187px;font-size:77px">ひとりで<br>つくる。<br><mark>その先へ。</mark></h1><p class="body-copy at" style="left:80px;top:515px;width:450px;font-size:25px">前回は、<br>「ソリューションとは何か」。<br>今回は、<strong>仲間とつくる<br>進め方</strong>を考える。</p>
+<div class="before-paper"><div class="black-label">Before <small>ひとりで</small></div><svg viewBox="0 0 220 220" class="person"><circle cx="108" cy="53" r="24"/><path d="M82 78 Q51 87 52 146 L45 164 M133 78 Q161 88 164 144 M77 100 L88 146 M143 99 L132 146 M44 170 H177 M79 146 H149 L162 204 H65 Z"/><path d="M87 51q20 12 39 0 M88 36q19-20 39 1"/></svg><p>思いつく<br>自分で決める<br>自分で直す</p></div>
+<div class="after-photo"><img src="assets/workshop.jpg" alt="一つの試作品について話し合う学生たち"><div class="yellow-label">After <small>チームで</small></div></div>
+<div class="note pink after-note">何をつくる？<br>誰が決める？<br>どう合わせる？</div>
+<svg class="doodle at" style="left:866px;top:405px;width:112px;height:114px" viewBox="0 0 120 110"><path d="M5 55 L100 55 M74 30 L104 55 L74 79"/></svg>
+<div class="at team-takeaway"><mark>チームで進める力は、</mark><br><mark>コードを書く力とは別の技術。</mark></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+
+<section class="slide goals" data-title="今日は、つくり方を変えてみる。" aria-label="スライド5：今日は、つくり方を変えてみる。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">05 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">04 / TODAY’S GOALS</div><h1 class="at" style="left:76px;top:169px;font-size:74px">今日は、<mark>つくり方を変えてみる。</mark></h1>
+<div class="goal-zone goal-a"><div class="period pink">3限<span>100 min</span></div><div class="goal-text"><span class="eyebrow">MAKE & THINK</span><h2>つくって、<br>進め方を考える。</h2><p>一言でつくる → 仕様を書いてつくる<br>さらに、チームでつくってみる。</p><div class="goal-result">目指すこと：<br><strong>方法論の違いと使い分けを説明できる。</strong></div></div></div>
+<div class="goal-zone goal-b"><div class="period blue">4限<span>100 min</span></div><div class="goal-text"><span class="eyebrow">TRY & LEARN</span><h2>試して、<br>振り返って変える。</h2><p>マシュマロチャレンジを通して、<br>早く確かめる意味を体験する。</p><div class="goal-result">目指すこと：<br><strong>チームの改善を、具体的な行動にする。</strong></div></div></div>
+<div class="hand at" style="left:519px;top:759px;font-size:33px;transform:rotate(-2deg)">聞くだけじゃない。手を動かし、話して、考えよう。</div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+
+<section class="slide setup" data-title="準備は、ひとつずつ。" aria-label="スライド6：準備は、ひとつずつ。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">06 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">05 / SET UP TOGETHER</div><h1 class="at" style="left:76px;top:175px;font-size:82px">準備は、<mark>ひとつずつ。</mark></h1>
+<p class="body-copy at" style="left:80px;top:302px">ダウンロードが終わったら、手順書の3以降へ。</p>
+<div class="setup-step step-one"><span class="tape"></span><b class="step-number">03</b><h2>インストール</h2><p>自分のOSの手順に沿って<br>ダウンロードしたファイルを開く。</p><div class="hand">警告が出たら、<br>入手元と内容を確認。</div></div>
+<div class="setup-step step-two"><span class="tape"></span><b class="step-number">04</b><h2>ログイン</h2><p>個人のGoogleアカウントで。<br>アカウントと権限を確認する。</p><div class="hand">大学のアカウントでは<br>使えない場合があります。</div></div>
+<div class="setup-step step-three"><span class="tape"></span><b class="step-number">05</b><h2>日本語にする</h2><p>拡張機能で「Japanese」を検索。<br>Microsoft製を入れて再起動。</p><div class="hand">詰まったら、<br>英語のままでも大丈夫。</div></div>
+<div class="note yellow setup-note">迷ったら、すぐ手を挙げよう。<br><strong>動かないときは、隣の画面を一緒に見よう。</strong></div>
+<p class="caption at" style="left:360px;top:839px">操作の詳細：<a href="../setup-antigravity-ide.md">セットアップ手順書 ↗</a></p>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+
+<section class="slide ide" data-title="どこで、何をする？" aria-label="スライド7：どこで、何をする？" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">07 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">06 / FIND YOUR WORKSPACE</div><h1 class="at" style="left:76px;top:165px;font-size:82px">どこで、<mark>何をする？</mark></h1>
+<div class="ide-window"><div class="ide-title"><i></i><i></i><i></i><span>vibe-coding — Antigravity IDE</span></div><div class="ide-body"><div class="ide-files"><span class="mono">EXPLORER</span><h3>VIBE-CODING</h3><p>⌄ アプリのフォルダ</p><p>　 index.html</p><span class="ide-numeral">1</span></div><div class="ide-editor"><span class="mono">index.html</span><div class="code-lines"><span>&lt;html lang="ja"&gt;</span><span>　&lt;body&gt;</span><span>　　…</span><span>　&lt;/body&gt;</span><span>&lt;/html&gt;</span></div><span class="ide-numeral">2</span></div><div class="ide-agent"><span class="mono">AGENT</span><div class="chat-note">AIに頼みたいことを<br>日本語で書く。</div><div class="chat-input">ここから相談する　↗</div><span class="ide-numeral">3</span></div></div></div>
+<div class="ide-label label-files"><b>① ファイルの場所</b><p>できたファイルを探す。</p></div><div class="ide-label label-editor"><b>② 中身を見る場所</b><p>仕様書やコードを確認する。</p></div><div class="ide-label label-agent"><b>③ AIに頼む場所</b><p>依頼する。直す。質問する。</p></div>
+<div class="note yellow ide-note">まず「フォルダーを開く」。<br>作業場所を決めてから始めよう。</div>
+<p class="caption at" style="left:360px;top:839px;font-size:17px">画面の概念図です。実際の表示・配置はバージョンや設定で変わります。</p>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+
+<section class="slide ready" data-title="準備できたら、つくってみよう。" aria-label="スライド8：準備できたら、つくってみよう。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">08 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">07 / READY TO MAKE</div><h1 class="at" style="left:76px;top:166px;font-size:78px">準備できたら、<br><mark>つくってみよう。</mark></h1>
+<div class="folder-paper"><span class="tape"></span><span class="eyebrow">今日のファイルの置き場所</span><div class="folder-root">ソフトウェア開発演習 / 第2回</div><div class="folder-branch"><b>vibe-coding</b><span class="yellow-label">演習A ／ いま開く</span><p>空のフォルダを作る。</p></div><div class="folder-branch"><b>starter-windows</b><span class="pale-label">演習B ／ あとで開く</span><p>配布ZIPを展開する。Macは starter-mac。</p></div></div><div class="hand folder-note">親の「第2回」ではなく、<br>使うフォルダそのものを開こう。</div>
+<div class="check-paper"><h2>READY?</h2><ul><li>IDEを起動・ログインできた</li><li>vibe-coding を開いた</li><li>自分のOSのZIPを展開した</li></ul><p>日本語化は、できていればOK。<br>まだ途中なら、隣の人と一緒に。</p></div>
+<div class="next-strip"><span>NEXT →</span><strong>まずは、一言でつくってみる。</strong><span class="hand">2人1組。PCは、それぞれ。</span></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+
+<section class="slide brief" data-title="まず、つくってみよう。" aria-label="スライド9：まず、つくってみよう。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">09 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">08 / EXERCISE A</div><h1 class="at" style="left:76px;top:170px;font-size:84px">まず、<br><mark>つくってみよう。</mark></h1>
+<p class="body-copy at" style="left:80px;top:424px;width:660px;font-size:25px">2人1組ですが、<strong>PCはそれぞれ使います。</strong><br>同じ一言から、自分の画面でつくってください。</p>
+<div class="brief-card"><div class="eyebrow">WORK ORDER — 依頼内容</div><p class="order">「<span class="order-mark">グループワークで<br>使えるタイマー</span>を<br>作ってください」</p><hr><p>依頼は、この一文だけです。<br>色も、機能も、使い方も、指定はありません。</p></div>
+<div class="brief-chip chip-1"><b>2</b><span>人1組・各自のPC</span></div>
+<div class="brief-chip chip-2"><b>8</b><span>分でつくる</span></div>
+<div class="brief-chip chip-3"><b>1</b><span>文だけの依頼</span></div>
+<p class="hand brief-hand">できたら、<strong style="font-family:Noto;font-weight:800">お互いの画面を見せ合おう。</strong><br>同じ一言なのに、違うものができているはず。</p>
+<svg class="doodle at" style="left:706px;top:588px;width:120px;height:96px" viewBox="0 0 120 96"><path d="M6 78 Q60 96 108 22 M84 30 L112 12 L118 46"/></svg>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+
+<section class="slide criteria" data-title="お客さんの条件は、5つありました。" aria-label="お客さんの条件は、5つありました。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">10 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">09 / THE HIDDEN CRITERIA</div><h1 class="at" style="left:76px;top:166px;font-size:58px">お客さんの条件は、<br><mark>5つありました。</mark></h1>
+<p class="body-copy at" style="left:80px;top:330px;width:560px;font-size:23px">どれも一言も伝えていません。<br><strong>依頼した人の頭の中にだけ</strong>ありました。</p>
+<div class="note yellow at" style="left:80px;top:470px;width:560px;font-size:24px;transform:rotate(-1.5deg);padding:18px 24px">落ちるように作ってあります。<br><strong>腕の問題ではありません。</strong></div>
+<ol class="criteria-list">
+<li><b>01</b><span>3チーム分の時間を<br>同時に計れる</span></li>
+<li><b>02</b><span>残り3分で<br>表示の色が変わる</span></li>
+<li><b>03</b><span>一時停止と<br>再開ができる</span></li>
+<li><b>04</b><span>時間を超えたら<br>マイナスで表示され続ける</span></li>
+<li><b>05</b><span>リセットは<br>確認してから実行される</span></li>
+</ol>
+<p class="caption at" style="left:80px;top:700px;width:560px">この5つが、今日でいう<strong>「受け入れ条件」</strong>です。</p>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide accept" data-title="では、お客さんとして確認します。" aria-label="スライド11：では、お客さんとして確認します。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">11 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">09 / ACCEPTANCE CHECK</div><h1 class="at" style="left:76px;top:168px;font-size:60px">では、お客さんとして<br><mark>確認します。</mark></h1>
+<div class="customer-badge"><b>お客さん役：<br>講師</b><span>これから5つの条件を<br>読み上げます。<br>自分の画面で ○ × を<br>数えてください。</span></div>
+<ul class="count-hands at"><li>5つ通った人　→ 挙手</li><li>3つ以上の人　→ 挙手</li><li>1つ以下の人　→ 挙手</li></ul>
+<div class="sheet"><span class="tape"></span><div class="eyebrow">ACCEPTANCE CRITERIA — 受け入れ条件</div><h2>読み上げた条件を、書き取ろう。</h2><p class="caption">条件は、最初から依頼した人の頭の中にありました。</p>
+<div class="sheet-row"><span class="no">1</span><span class="blank"></span><span class="ox">○ / ×</span></div>
+<div class="sheet-row"><span class="no">2</span><span class="blank"></span><span class="ox">○ / ×</span></div>
+<div class="sheet-row"><span class="no">3</span><span class="blank"></span><span class="ox">○ / ×</span></div>
+<div class="sheet-row"><span class="no">4</span><span class="blank"></span><span class="ox">○ / ×</span></div>
+<div class="sheet-row"><span class="no">5</span><span class="blank"></span><span class="ox">○ / ×</span></div>
+<div class="sheet-foot"><span class="score">達成 <i>__</i> / 60</span><span class="hand" style="font-size:22px">できなかった条件に、<br>印をつけておこう。</span></div></div>
+<div class="note yellow sheet-note">落ちるように作ってあります。<br><strong>腕の問題ではありません。</strong></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+
+<section class="slide wonder" data-title="なぜ、通らなかった？" aria-label="スライド12：なぜ、通らなかった？" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">12 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">10 / THINK TOGETHER</div>
+<div class="big-q"><h1>なぜ、<br><mark>通らなかった？</mark></h1><p>ペアで2分 → 全体で共有。<br>出てきたことは、全部ホワイトボードへ。</p></div>
+<div class="sticky s1">作るつもりだったもの、<br>説明できる？</div>
+<div class="sticky s2">条件を先に聞けたら、<br>何を聞いた？</div>
+<div class="sticky s3">どこまでできたら<br>「完成」だった？</div>
+<div class="sticky s4">同じものを、<br>もう一度作れる？</div>
+<div class="sticky s5">ペアの相手は、<br>中身を説明できる？</div>
+<div class="sticky s6">後から条件が増えたら、<br>どうなった？</div>
+<svg class="doodle at" style="left:352px;top:330px;width:70px;height:60px" viewBox="0 0 70 60"><path d="M4 30 H62 M44 12 L66 30 L44 48"/></svg>
+<svg class="doodle at" style="left:1172px;top:330px;width:70px;height:60px" viewBox="0 0 70 60"><path d="M66 30 H8 M26 12 L4 30 L26 48"/></svg>
+<div class="collage-band"><span>正解を当てる時間ではありません。</span><em>困ったことを、言葉にする時間です。</em></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+
+<section class="slide ch-method" data-title="なぜ、<mark>型</mark>があるのか。" aria-label="なぜ、<mark>型</mark>があるのか。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">13 / 60</div>
+<div class="chapter-num">01</div>
+<div class="chapter-copy"><div class="eyebrow">CHAPTER 01</div><h1>なぜ、<br><mark>型</mark>があるのか。</h1><p class="body-copy">ホワイトボードに出た困りごとは、<br>すでに解かれてきた問題です。</p></div>
+<div class="chapter-bar yellow"></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide method" data-title="つくり方にも、型がある。" aria-label="スライド14：つくり方にも、型がある。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">14 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">11 / WHAT IS A METHODOLOGY</div><h1 class="at" style="left:76px;top:166px;font-size:78px">つくり方にも、<mark>型がある。</mark></h1>
+<p class="body-copy at" style="left:80px;top:300px;font-size:25px"><strong>ソフトウェア開発方法論</strong>とは、次の4つを決めた「進め方の型」です。</p>
+<div class="def-tile d1"><b>01</b><h3>何をつくるか</h3><p>要求を聞き、条件を書き留める。</p></div>
+<div class="def-tile d2"><b>02</b><h3>どの順で進めるか</h3><p>計画する。小さく分ける。反復する。</p></div>
+<div class="def-tile d3"><b>03</b><h3>誰が何をやるか</h3><p>役割と責任、決め方を決める。</p></div>
+<div class="def-tile d4"><b>04</b><h3>どこまでで完成か</h3><p>受け入れ条件と、完成の定義。</p></div>
+<div class="def-strip"><p>さっきホワイトボードに出たことは、<br><strong>全部「つくり方が決まっていないと起きること」。</strong><br>同じことで困った人たちが、50年以上かけて型をつくってきました。</p><span class="hand">コードの書き方ではなく、<br>進め方の話です。</span></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+
+<section class="slide dod" data-title="受け入れ条件と、完成の定義。" aria-label="受け入れ条件と、完成の定義。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">15 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">12 / TWO KINDS OF "DONE"</div><h1 class="at" style="left:76px;top:164px;font-size:62px">「できた」には、<br><mark>2種類ある。</mark></h1>
+<div class="dod-card dod-a"><span class="dod-tag pink">受け入れ条件</span><h2>その機能が<br>満たすべき条件</h2><p class="dod-ex">例：「残り3分になったら、表示の色が変わる」</p><p class="dod-scope">機能ごとに書く</p></div>
+<div class="dod-card dod-b"><span class="dod-tag blue">完成の定義（DoD）</span><h2>成果物が「完成」と<br>呼べる共通の基準</h2><p class="dod-ex">例：「必要なテストとレビューを終え、使える状態になっている」</p><p class="dod-scope">チーム全体で1つ決める</p></div>
+<svg class="doodle at" style="left:762px;top:452px;width:80px;height:60px" viewBox="0 0 80 60"><path d="M6 30 H70 M52 12 L74 30 L52 48"/></svg>
+<div class="note yellow at" style="left:80px;top:722px;width:900px;font-size:25px;transform:rotate(-1deg);padding:18px 26px">今日の演習で書くのは、<strong>機能ごとの「受け入れ条件」</strong>です。</div>
+<p class="caption at" style="left:1030px;top:730px;width:480px">関係はしていますが、別のものです。<br>混ぜると「完成したのに使えない」が起きます。</p>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide map" data-title="ひとりで効く型、チームで効く型。" aria-label="スライド16：ひとりで効く型、チームで効く型。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">16 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">12 / THE MAP</div><h1 class="at" style="left:76px;top:158px;font-size:56px">ひとりで効く型、<br><mark>チームで効く型。</mark></h1>
+<div class="island island-solo"><h3>ひとり〜小規模で効く</h3><p class="sub">今日、3限で手を動かす側</p><ul><li>仕様駆動開発<b>先に条件を書いてから作る</b></li><li>テスト駆動開発<b>先に確かめ方を決める</b></li></ul></div>
+<div class="island island-team"><h3>チームで効く</h3><p class="sub">今日、3限の後半と4限で扱う側</p><ul><li>ウォーターフォール<b>段階を順に進める</b></li><li>アジャイル（スクラム・XP）<b>反復して検査・適応する</b></li><li>リーン<b>無駄を削り、学習を回す</b></li><li>DevOps<b>つくる人と動かす人が協働する</b></li></ul></div>
+<svg class="bridge" viewBox="0 0 52 30"><path d="M2 15 H46 M34 4 L50 15 L34 26" fill="none" stroke="#141414" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div class="timeline"><h3>代表的な出来事</h3><dl><dt>1950s〜</dt><dd>反復・漸進的に開発する実践</dd><dt>1970s</dt><dd>段階的なプロセスの議論</dd><dt>1990s</dt><dd>スクラム、XPなどの実践</dd><dt>2001</dt><dd>アジャイルソフトウェア開発宣言</dd><dt>2009〜</dt><dd>DevOpsという名称が広まる</dd><dt>近年</dt><dd>AIと仕様を中心に進めるツール</dd></dl></div>
+<div class="note yellow map-note">どれが正解か、ではありません。<br><strong>何が不確かで、<br>失敗のコストがどれくらいか</strong><br>で選びます。</div>
+<p class="map-caption at">新しい型が、古い型を置き換えてきたわけでは<br>ありません。仕様を明確にする考え方も、<br>生成AIより前からあります。</p>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+
+<section class="slide history" data-title="置き換えではなく、積み重ね。" aria-label="置き換えではなく、積み重ね。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">17 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">14 / A SHORT HISTORY</div><h1 class="at" style="left:76px;top:164px;font-size:60px">置き換えではなく、<br><mark>積み重ね。</mark></h1>
+<div class="tl-rail"></div>
+<div class="tl-item t1"><b>1950s〜</b><p>反復・漸進的に<br>開発する実践</p></div>
+<div class="tl-item t2"><b>1970s</b><p>段階的なプロセス<br>についての議論</p></div>
+<div class="tl-item t3"><b>1990s</b><p>スクラム、XPなどの<br>実践が発展</p></div>
+<div class="tl-item t4"><b>2001</b><p>アジャイルソフトウェア<br>開発宣言</p></div>
+<div class="tl-item t5"><b>2009〜</b><p>DevOpsという名称で<br>開発と運用の協働</p></div>
+<div class="tl-item t6"><b>近年</b><p>AIと仕様を中心に<br>進めるツール</p></div>
+<div class="note yellow at" style="left:80px;top:664px;width:760px;font-size:23px;transform:rotate(-1deg);padding:16px 24px">新しい型が古い型を<strong>置き換えてきたわけではありません。</strong><br>見直したり、組み合わせたりしながら発展してきました。</div>
+<p class="caption at" style="left:900px;top:668px;width:600px">仕様を明確にして開発する考え方そのものは、<br>生成AIより前からあります。今日使う GitHub Spec Kit は、<br>その考え方をAIとの開発に取り入れたツールの一つです。</p>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide sdd" data-title="AIに、丸投げしない。" aria-label="スライド18：AIに、丸投げしない。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">18 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">13 / SPEC-DRIVEN DEVELOPMENT</div><h1 class="at" style="left:76px;top:166px;font-size:80px">AIに、<mark>丸投げしない。</mark></h1>
+<p class="body-copy at" style="left:80px;top:286px;font-size:25px">仕様を真ん中に置いて、<strong>一段ずつ人が確かめながら</strong>進めます。</p>
+<div class="flow">
+<div class="flow-step"><span class="stamp">人が書く</span><b>01</b><h3>仕様</h3><p>誰の何を、どこまでできたら完成か。</p></div><span class="flow-arrow">→</span>
+<div class="flow-step"><span class="stamp">人が確認</span><b>02</b><h3>計画</h3><p>どう作るかの見取り図。</p></div><span class="flow-arrow">→</span>
+<div class="flow-step"><span class="stamp">人が確認</span><b>03</b><h3>タスク</h3><p>作業を小さく分ける。</p></div><span class="flow-arrow">→</span>
+<div class="flow-step"><b>04</b><h3>実装</h3><p>AIが書く。人が読む。</p></div><span class="flow-arrow">→</span>
+<div class="flow-step"><span class="stamp">人が判定</span><b>05</b><h3>検証</h3><p>受け入れ条件を1つずつ確かめる。</p></div>
+</div>
+<div class="cmd-bar"><span class="label">今日つかう<br>4つのコマンド</span><code>/speckit-specify</code><span class="arrow">→</span><code>/speckit-plan</code><span class="arrow">→</span><code>/speckit-tasks</code><span class="arrow">→</span><code>/speckit-implement</code></div>
+<div class="note yellow spec-note">仕様＝お客さんの頭の中にある<br>条件を、書き留めたもの。</div>
+<p class="flow-caption at">GitHub Spec Kit を使います。仕様・計画・タスクは<strong>ファイルとして手元に残ります。</strong></p>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+
+<section class="slide speckit" data-title="4つのコマンドで、進める。" aria-label="4つのコマンドで、進める。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">19 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">16 / GITHUB SPEC KIT</div><h1 class="at" style="left:76px;top:164px;font-size:66px">4つのコマンドで、<mark>進める。</mark></h1>
+<div class="cmd-card c1"><code>/speckit-specify</code><h3>仕様をつくる</h3><p>お題と受け入れ条件を渡す。<br><b>spec.md</b> ができる。</p></div>
+<div class="cmd-card c2"><code>/speckit-plan</code><h3>計画をつくる</h3><p>どう作るかの見取り図。<br><b>plan.md</b> ができる。</p></div>
+<div class="cmd-card c3"><code>/speckit-tasks</code><h3>タスクに分ける</h3><p>作業を小さく分ける。<br><b>tasks.md</b> ができる。</p></div>
+<div class="cmd-card c4"><code>/speckit-implement</code><h3>実装する</h3><p>タスクに沿ってAIが書く。<br>人が読んで確かめる。</p></div>
+<div class="hand at" style="left:80px;top:690px;font-size:27px;width:620px;line-height:1.7">コマンドの間には、<br>かならず<strong style="font-family:Noto;font-weight:800">人のレビュー</strong>が入ります。</div>
+<div class="note blue at" style="left:740px;top:690px;width:786px;font-size:23px;transform:rotate(1deg);padding:18px 24px">配布した <strong>starter-windows / starter-mac</strong> を開くと、<br>この4つが最初から使えます。</div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide vibe-limit" data-title="速い。けれど、残らない。" aria-label="速い。けれど、残らない。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">20 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">17 / WHAT VIBE CODING IS GOOD AT</div><h1 class="at" style="left:76px;top:164px;font-size:68px">速い。けれど、<mark>残らない。</mark></h1>
+<div class="scale-box good"><span class="scale-tag">得意なこと</span><ul><li>とにかく速い</li><li>0→1に向く</li><li>捨てる前提の試作</li><li>ひとりで完結する</li></ul></div>
+<div class="scale-box bad"><span class="scale-tag dark">壊れること</span><ul><li>条件が言葉になっていない</li><li>「完成」の基準がない</li><li>後から条件が増えると崩れる</li><li>他の人が続きを作れない</li></ul></div>
+<div class="scale-pivot"></div>
+<p class="body-copy at" style="left:80px;top:700px;width:1000px;font-size:25px">今日は<strong>バイブコーディングを否定しに来たのではありません。</strong><br>それしか持っていないと、チームで困る、という話です。</p>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide exercise-b" data-title="今度は、条件を先に書く。" aria-label="スライド21：今度は、条件を先に書く。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">21 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">14 / EXERCISE B</div><h1 class="at" style="left:76px;top:162px;font-size:66px">今度は、<mark>条件を先に書く。</mark></h1>
+<div class="step-rail">
+<div class="rail-item now"><span class="time">3 min</span><div><h3>受け入れ条件を書く</h3><p>読み上げられた5つ＋追加の1つを、自分たちの言葉で。<strong>2人で相談して、同じ内容にそろえます。</strong></p></div></div>
+<div class="rail-item"><span class="time">5 min</span><div><h3>仕様書をつくって、読む</h3><p><code>/speckit-specify</code> → 生成された spec.md に、条件の抜けや勝手な前提がないか確認して直す。</p></div></div>
+<div class="rail-item"><span class="time">6 min</span><div><h3>計画・タスク・実装</h3><p><code>/speckit-plan</code> → <code>/speckit-tasks</code> → <code>/speckit-implement</code>。待ち時間は、現場の話をします。</p></div></div>
+</div>
+<div class="template-paper"><span class="tape"></span><div class="eyebrow">WORKSHEET — 受け入れ条件</div><h2>「できたら完成」を決める。</h2><p class="caption">完成の判断は、人間の仕事です。</p>
+<div class="template-line"><i>1</i><span></span></div><div class="template-line"><i>2</i><span></span></div><div class="template-line"><i>3</i><span></span></div><div class="template-line"><i>4</i><span></span></div><div class="template-line"><i>5</i><span></span></div><div class="template-line"><i>6</i><span></span></div>
+<p class="hand">曖昧な言葉は、確かめられない。<br>「使いやすく」ではなく「3秒で押せる」。</p></div>
+<div class="note blue b-note">時間内に実装まで終わらなくて大丈夫。<br><strong>各段階で何ができたかを確認しよう。</strong></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+
+<section class="slide how-to-write" data-title="確かめられる言葉で書く。" aria-label="確かめられる言葉で書く。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">22 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">19 / HOW TO WRITE CRITERIA</div><h1 class="at" style="left:76px;top:164px;font-size:66px">確かめられる言葉で、<mark>書く。</mark></h1>
+<div class="ba-col ba-bad"><span class="ba-tag">これだと確かめられない</span><p>「使いやすくする」</p><p>「見やすい色にする」</p><p>「すぐ分かるようにする」</p><span class="ba-why">人によって判断が変わる</span></div>
+<svg class="doodle at" style="left:706px;top:430px;width:110px;height:70px" viewBox="0 0 110 70"><path d="M6 35 H92 M72 14 L100 35 L72 56"/></svg>
+<div class="ba-col ba-good"><span class="ba-tag yellow">これなら確かめられる</span><p>「3秒以内に開始できる」</p><p>「残り3分で色が変わる」</p><p>「リセット前に確認が出る」</p><span class="ba-why">○×で判定できる</span></div>
+<div class="note yellow at" style="left:80px;top:706px;width:1100px;font-size:25px;transform:rotate(-1deg);padding:18px 26px">コツは、<strong>「誰が見ても同じ答えになるか」</strong>を自分に聞くこと。</div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide review-spec" data-title="AIが書いた仕様を、疑う。" aria-label="AIが書いた仕様を、疑う。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">23 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">20 / REVIEW THE SPEC</div><h1 class="at" style="left:76px;top:164px;font-size:64px">AIが書いた仕様を、<mark>読む。</mark></h1>
+<div class="spec-screen"><div class="spec-bar"><span class="mono">specs / 001-timer / spec.md</span></div><div class="spec-body"><p class="spec-h">## 受け入れ条件</p><p>AC1 3チーム分を同時に計れる</p><p>AC2 残り3分で色が変わる</p><p class="spec-miss">AC3 …（一時停止は？）</p><p>AC4 超過はマイナス表示</p><p class="spec-add">AC5 音は毎分鳴らす　← 頼んでいない</p></div></div>
+<ol class="review-points"><li><b>抜けていないか</b><span>書いた条件が全部入っているか。</span></li><li><b>増えていないか</b><span>頼んでいない前提が混ざっていないか。</span></li><li><b>読めば分かるか</b><span>相方が読んで、同じ絵が浮かぶか。</span></li></ol>
+<div class="hand at" style="left:80px;top:700px;font-size:27px;width:700px;line-height:1.7">直すのは、コードではなく<strong style="font-family:Noto;font-weight:800">仕様のほう</strong>。</div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide compare" data-title="AとBで、何が変わった？" aria-label="スライド24：AとBで、何が変わった？" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">24 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">15 / COMPARE A & B</div><h1 class="at" style="left:76px;top:164px;font-size:76px">AとBで、<mark>何が変わった？</mark></h1>
+<table class="ab-table"><thead><tr><th>確認すること</th><th>演習A ／ 一言で</th><th class="b-col">演習B ／ 仕様から</th></tr></thead>
+<tbody>
+<tr><th>共通5条件の達成数</th><td class="fill">　／ 5</td><td class="b-col fill">　／ 5</td></tr>
+<tr><th>追加条件の達成</th><td>対象外</td><td class="b-col fill">○ ・ × ・ 未確認</td></tr>
+<tr><th>手元に残ったもの</th><td>コードだけ</td><td class="b-col">spec / plan / tasks</td></tr>
+</tbody></table>
+<div class="tally-card"><h3>数えてみよう</h3><p>通った条件の数を、自分たちで記入します。</p><div class="tally-row"><span>演習A</span><b>／ 5</b></div><div class="tally-row b"><span>演習B</span><b>／ 5</b></div><div class="tally-row"><span>ペア2人の結果</span><b class="hand" style="font-size:20px">似ていた？ 違った？</b></div><p class="tally-note">確認できなかった条件は「未確認」。<br>サンプルを使った場合は、その旨も残します。</p></div>
+<div class="note yellow compare-note">同じ人が、同じお題で、同じAIに頼みました。<br><strong>違うのは、条件を先に言葉にしたかどうかだけ。</strong></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide caveat" data-title="差は、どこから来た？" aria-label="差は、どこから来た？" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">25 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">22 / READ THE RESULT CAREFULLY</div><h1 class="at" style="left:76px;top:164px;font-size:70px">差は、<mark>どこから来た？</mark></h1>
+<div class="ask-big"><h3>問いかけ</h3><ol><li>条件を先に共有して、何が変わりましたか？</li><li>仕様書を読んで、認識の違いや不足に気づけましたか？</li><li>他の人が続きを作るとき、役に立つのはどれですか？</li></ol></div>
+<div class="caution-box"><b>気をつけること</b><p>条件を先に知っていたこと、2度目だったこと、スターターの設定も違います。<br><strong>差のすべてを仕様駆動開発の効果とは言い切れません。</strong></p><p class="caution-add">変更への強さを確かめるなら、同じ変更依頼を両方に出して比べる必要があります。</p></div>
+<div class="note yellow at" style="left:80px;top:700px;width:1010px;font-size:25px;transform:rotate(-1deg);padding:16px 26px">この演習で体験したのは、<strong>要求を共有し、記録し、確認する意味</strong>です。</div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section><section class="slide exercise-c" data-title="では、チームで作ってみよう。" aria-label="スライド：では、チームで作ってみよう。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">26 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">23 / EXERCISE C</div><h1 class="at" style="left:76px;top:164px;font-size:70px">では、<mark>チームで作ってみよう。</mark></h1>
+<div class="specsheet"><span class="tape"></span><div class="eyebrow">お題：授業のグループワーク運営ツール</div><ol class="feat"><li><b>01</b>複数チームの時間を<strong>並行して</strong>計れるタイマー</li><li><b>02</b>チームごとの<strong>記録（数値）</strong>を入力できる</li><li><b>03</b>記録を<strong>順位つきで一覧表示</strong>できる</li><li><b>04</b>各チームの<strong>振り返りメモ</strong>を残せる</li></ol><p class="feat-note">ペアで作ったものを持ち寄ってOK。<br><strong>最終成果物は、チームで1つ。</strong></p></div>
+<div class="brief-chip chip-c1"><b>3-5</b><span>人のチーム</span></div>
+<div class="brief-chip chip-c2"><b>12</b><span>分でつくる</span></div>
+<div class="brief-chip chip-c3"><b>4</b><span>機能すべて必須</span></div>
+<div class="note yellow at" style="left:80px;top:716px;width:620px;font-size:24px;transform:rotate(-1.5deg);padding:16px 24px">このチームで、<strong>4限も一緒に動きます。</strong></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide no-guide" data-title="進め方は、教えません。" aria-label="スライド：進め方は、教えません。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">27 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">24 / NO INSTRUCTIONS</div><h1 class="at" style="left:76px;top:170px;font-size:88px">進め方は、<br><mark>教えません。</mark></h1>
+<div class="open-q"><p>誰が、何をやる？</p><p>どちらのベースを使う？</p><p>どうやって1つにまとめる？</p><p>決めるのは誰？</p><span class="open-tag">ぜんぶ、チームで決めてください。</span></div>
+<div class="note pink at" style="left:820px;top:690px;width:600px;font-size:25px;transform:rotate(2deg);padding:18px 26px">質問されても、<br><strong>「チームで決めてください」</strong>と答えます。</div>
+<svg class="doodle at" style="left:640px;top:430px;width:130px;height:110px" viewBox="0 0 130 110"><path d="M8 20 Q70 0 120 60 M96 58 L124 66 L118 38"/></svg>
+<p class="caption at" style="left:80px;top:756px;width:640px">困ってもいい時間です。何が起きたかを覚えておいてください。</p>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide wonder2" data-title="チームだと、何が難しい？" aria-label="スライド：チームだと、何が難しい？" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">28 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">25 / THINK TOGETHER</div>
+<div class="big-q2"><h1>チームだと、<br><mark>何が難しい？</mark></h1><p>チームで3分 → 全体で共有。<br>ホワイトボードの2枚目に書き出します。</p></div>
+<div class="sticky t-s1">誰が何をやるか<br>決まらない</div>
+<div class="sticky t-s2">同時に触って<br>ぶつかる</div>
+<div class="sticky t-s3">どちらのベースを<br>使うか決まらない</div>
+<div class="sticky t-s4">言っていることが<br>人によって違う</div>
+<div class="sticky t-s5">完成の判断が<br>合わない</div>
+<div class="sticky t-s6">手が空く人が<br>出てしまう</div>
+<div class="sticky t-s7">全体を見ている人が<br>いない</div>
+<div class="note yellow at" style="left:80px;top:708px;width:880px;font-size:25px;transform:rotate(-1deg);padding:16px 26px">そして、<strong>「どうすればよかったか」</strong>も出してください。</div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide answers" data-title="困りごとには、名前がある。" aria-label="スライド：困りごとには、名前がある。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">29 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">27 / PROBLEM → PRACTICE</div><h1 class="at" style="left:76px;top:162px;font-size:62px">困りごとには、<mark>名前がある。</mark></h1>
+<table class="pair-table"><thead><tr><th>さっき出た困りごと</th><th>方法論での答え</th></tr></thead><tbody>
+<tr><td>誰が何をやるか決まらない</td><td><b>スクラムの責任の区分</b>（PO / SM / 開発者）</td></tr>
+<tr><td>何からやるか揉める</td><td><b>プロダクトバックログ</b>と<b>スプリント計画</b></td></tr>
+<tr><td>隣が何をしているか分からない</td><td><b>デイリースクラム</b></td></tr>
+<tr><td>完成の判断が合わない</td><td><b>完成の定義</b>と<b>受け入れ条件</b></td></tr>
+<tr><td>同時に触って壊れる</td><td><b>バージョン管理</b>・<b>CI / CD</b></td></tr>
+<tr><td>同じ失敗を繰り返す</td><td><b>レトロスペクティブ</b>（4限で体験します）</td></tr>
+<tr><td>期日も範囲も動かせない</td><td><b>ウォーターフォール</b>などの段階的な進め方</td></tr>
+</tbody></table>
+<div class="note yellow at" style="left:336px;top:762px;width:1190px;font-size:24px;transform:rotate(-.8deg);padding:14px 24px">みなさんが出した打ち手は、<strong>方法論の再発明です。</strong>いい線をいっています。</div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide waterfall" data-title="決めてから、順に積む。" aria-label="スライド：決めてから、順に積む。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">30 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">28 / WATERFALL</div><h1 class="at" style="left:76px;top:164px;font-size:70px">決めてから、<mark>順に積む。</mark></h1>
+<div class="wf-steps"><div class="wf s1"><b>要件定義</b></div><div class="wf s2"><b>設計</b></div><div class="wf s3"><b>実装</b></div><div class="wf s4"><b>テスト</b></div><div class="wf s5"><b>展開・保守</b></div></div>
+<div class="pro-con"><div class="pc good"><span>向いている場面</span><p>要求・技術・依存関係が<strong>比較的安定</strong>していて、工程ごとの成果物や承認を明確にしたいとき。<br>（法改正対応、規制の厳しい分野）</p></div><div class="pc bad"><span>注意点</span><p>動くものを使った検証が<strong>後半に偏る</strong>と、要求の食い違いや技術上の問題に気づくのが遅くなる。</p></div></div>
+<div class="hand at" style="left:1080px;top:236px;font-size:26px;width:420px;transform:rotate(3deg);line-height:1.6">前の工程には、<br>あまり戻らない前提。</div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide agile" data-title="変化を、前提にする。" aria-label="スライド：変化を、前提にする。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">31 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">29 / AGILE</div><h1 class="at" style="left:76px;top:164px;font-size:74px">変化を、<mark>前提にする。</mark></h1>
+<div class="manifesto"><div class="eyebrow">アジャイルソフトウェア開発宣言（2001）</div>
+<div class="mf"><span class="mf-l">プロセスやツール</span><span class="mf-x">よりも</span><b class="mf-r">個人と対話</b></div>
+<div class="mf"><span class="mf-l">包括的なドキュメント</span><span class="mf-x">よりも</span><b class="mf-r">動くソフトウェア</b></div>
+<div class="mf"><span class="mf-l">契約交渉</span><span class="mf-x">よりも</span><b class="mf-r">顧客との協調</b></div>
+<div class="mf"><span class="mf-l">計画に従うこと</span><span class="mf-x">よりも</span><b class="mf-r">変化への対応</b></div>
+</div>
+<div class="note blue at" style="left:80px;top:684px;width:700px;font-size:23px;transform:rotate(-1deg);padding:18px 24px">左側に価値がない、という意味ではありません。<br><strong>右側により価値を置く</strong>、という宣言です。</div>
+<p class="caption at" style="left:840px;top:700px;width:600px">動くソフトウェアを早く届け、対話とフィードバックで<br>「作るもの」と「進め方」を適応させていく考え方。<br>その実践の一つがスクラムです。</p>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide scrum" data-title="スプリントで、回す。" aria-label="スライド：スプリントで、回す。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">32 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">30 / SCRUM</div><h1 class="at" style="left:76px;top:162px;font-size:66px">スプリントで、<mark>回す。</mark></h1>
+<div class="scrum-loop"><div class="sl-item l1"><b>プロダクト<br>バックログ</b><span>順序をつけた<br>やることの一覧</span></div><div class="sl-item l2"><b>スプリント<br>プランニング</b><span>この期間で<br>何をやるか決める</span></div><div class="sl-item l3"><b>開発<br>（デイリースクラム）</b><span>毎日15分、<br>進捗と計画を調整</span></div><div class="sl-item l4"><b>スプリント<br>レビュー</b><span>成果を見せて<br>次の方向を話す</span></div><div class="sl-item l5"><b>レトロ<br>スペクティブ</b><span>進め方を<br>振り返って改善</span></div></div>
+<div class="loop-back">↻ スプリントごとに、これを繰り返す</div><div class="roles"><div class="role"><span class="role-tag pink">プロダクトオーナー</span><p>価値を最大化する責任。目標とバックログの順序を明確にする。</p></div><div class="role"><span class="role-tag blue">スクラムマスター</span><p>スクラムの理解と実践を支援し、チームが効果的に働けるようにする。</p></div><div class="role"><span class="role-tag green">開発者</span><p>利用可能な成果物を作る。必要な作業の進め方は自分たちで決める。</p></div></div>
+<p class="caption at" style="left:700px;top:806px;width:830px;font-size:17px">スプリントは1か月以内の一定期間（一般には1〜4週間）。イベントはすべてスプリントの中で行います。</p>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide xp" data-title="2人で1台も、技術です。" aria-label="スライド：2人で1台も、技術です。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">33 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">31 / EXTREME PROGRAMMING</div><h1 class="at" style="left:76px;top:164px;font-size:68px">相談しながら作るのも、<mark>技術です。</mark></h1>
+<div class="xp-grid"><div class="xp-card"><b>ペアプログラミング</b><p>2人で1台を共有し、操作する人と、内容を確認して次を考える人に分かれる。</p><span class="xp-today">今日は1人1台</span></div><div class="xp-card"><b>テスト駆動開発</b><p>先に確かめ方を決めてから作る。</p></div><div class="xp-card"><b>継続的インテグレーション</b><p>こまめに統合して、壊れていないか確認する。</p></div><div class="xp-card"><b>小さなリリース</b><p>大きく作らず、少しずつ出す。</p></div></div>
+<div class="note yellow at" style="left:80px;top:676px;width:940px;font-size:24px;transform:rotate(-1deg);padding:18px 26px">今日の演習は<strong>1人1台で、結果を見比べる形</strong>でした。<br>厳密なペアプロではありませんが、<strong>一人で抱えない</strong>点は同じです。</div>
+<p class="caption at" style="left:1020px;top:724px;width:500px">アジャイルの中でも、技術的な規律を重視する進め方。<br>規律を守れないと崩れる、という側面もあります。</p>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide lean-devops" data-title="無駄を削る。止めずに届ける。" aria-label="スライド：無駄を削る。止めずに届ける。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">34 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">32 / LEAN & DEVOPS</div><h1 class="at" style="left:76px;top:162px;font-size:58px">無駄を削る。<br><mark>止めずに届ける。</mark></h1>
+<div class="two-panel lean-panel"><span class="panel-tag green">リーン</span><h3>価値の流れを良くする</h3><ul><li>顧客にとっての価値を見極める</li><li>流れを可視化して、無駄を見つける</li><li>小さく試して学ぶ（リーンスタートアップ）</li></ul><p class="panel-foot">4限で扱う <strong>MVP</strong> も、この考え方から来ています。</p></div>
+<div class="two-panel devops-panel"><span class="panel-tag blue">DevOps</span><h3>作る人と動かす人が協働する</h3><dl><dt>CI</dt><dd>変更を頻繁に統合し、自動テストで早く問題を見つける</dd><dt>継続的デリバリー</dt><dd>いつでも本番へ出せる状態を保つ（出す判断は人）</dd><dt>継続的デプロイ</dt><dd>検証を通った変更を自動で本番へ反映する</dd></dl><p class="panel-foot">後ろの2つは、どちらも「CD」と略されます。</p></div>
+<p class="caption at" style="left:336px;top:806px;width:1190px;font-size:18px">演習Cで別々に作った機能を一つにまとめる作業が、インテグレーションです。CIは早期発見を助けますが、つなぎ方や競合の解決には人の設計・調整も要ります。</p>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide choose" data-title="どれが正解か、ではない。" aria-label="スライド：どれが正解か、ではない。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">35 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">33 / HOW TO CHOOSE</div><h1 class="at" style="left:76px;top:160px;font-size:60px">どれが正解か、ではない。<br><mark>何が不確かか。</mark></h1>
+<div class="axis-box"><div class="axis-row"><b>不確実性が高い</b><span>→ 小さく試し、フィードバックを得る機会を増やす</span></div><div class="axis-row"><b>要求や依存関係が安定</b><span>→ 事前計画や工程ごとの合意を活用する</span></div><div class="axis-row"><b>失敗の影響が大きい</b><span>→ 方法論によらず、設計・検証・レビューを厚くする</span></div></div>
+<div class="case-cards"><div class="case"><span class="case-tag">CASE A</span><p>法改正に対応する業務システム改修。<br><strong>期日は動かせず、必要な機能は全部決まっている。</strong></p><div class="case-ask">どう進める？</div></div><div class="case"><span class="case-tag yellow">CASE B</span><p>学内の困りごとを解決する新しいアプリ。<br><strong>誰がどう使うか、本当に使われるかは分からない。</strong></p><div class="case-ask">どう進める？</div></div></div>
+<div class="hand at" style="left:1052px;top:762px;font-size:26px;width:470px;transform:rotate(-2deg);line-height:1.6">みなさんが第4回以降でやるのは、<br>ケースBの世界です。</div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide wrap3" data-title="決めた方が、速い。" aria-label="スライド：決めた方が、速い。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">36 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">34 / WRAP UP — 3限</div><h1 class="at" style="left:76px;top:164px;font-size:80px">決めた方が、<mark>速い。</mark></h1>
+<ol class="wrap-list"><li><b>01</b><p>ひとりでも、チームでも、<strong>先に「何をつくるか」「どう進めるか」を決めた方が速い。</strong></p></li><li><b>02</b><p>ただし、<strong>決めたことは変わる前提</strong>で扱う。だから反復する。</p></li><li><b>03</b><p>方法論は、同じ痛みに困った人たちがつくってきた型。<strong>銀の弾丸はない。</strong></p></li></ol>
+<div class="note yellow at" style="left:80px;top:704px;width:900px;font-size:26px;transform:rotate(-1deg);padding:18px 26px">4限は、その「変わる前提で反復する」を<strong>体を使って</strong>体験します。</div>
+<div class="hand at" style="left:1040px;top:706px;font-size:28px;width:480px;transform:rotate(2deg);line-height:1.6">PCは、いったん閉じてください。</div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide ch-ws" data-title="手を動かして、確かめる。" aria-label="スライド：手を動かして、確かめる。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">37 / 60</div>
+<div class="chapter-num">03</div>
+<div class="chapter-copy"><div class="eyebrow">CHAPTER 03 — 4限 / 100 min</div><h1>手を動かして、<br><mark>確かめる。</mark></h1><p class="body-copy">アジャイルワークショップ。<br>パスタとマシュマロで、チームの進め方を体験します。</p></div>
+<div class="chapter-bar pink"></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide client" data-title="塔を、建ててほしい。" aria-label="スライド：塔を、建ててほしい。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">38 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">36 / THE CLIENT</div><h1 class="at" style="left:76px;top:168px;font-size:82px">塔を、<br><mark>建ててほしい。</mark></h1>
+<div class="client-bubbles"><div class="bubble"><span>👨‍💼 お客さん</span><p>大好きなマシュマロとパスタを使って、塔を建てたい！</p></div><div class="bubble b2"><span>🏗 お客さん</span><p>塔は、高ければ高いほど良い！</p></div><div class="bubble b3"><span>✨ お客さん</span><p>マシュマロの位置は、高ければ高いほど良い！</p></div></div>
+<div class="big-arrow">➡️ どうする？</div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide rules" data-title="ルールは、5つ。" aria-label="スライド：ルールは、5つ。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">39 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">37 / RULES</div><h1 class="at" style="left:76px;top:164px;font-size:74px">ルールは、<mark>5つ。</mark></h1>
+<ol class="rule-list"><li><b>01</b><p>1チーム3〜5人で、<strong>作戦タイムも含めて18分</strong>で行います。</p></li><li><b>02</b><p><strong>自立可能で、できるだけ高いタワー</strong>を立て、上にマシュマロを置きます。（パスタに刺してもOK）</p></li><li><b>03</b><p><strong>テープで足場を固定してはいけません。</strong></p></li><li><b>04</b><p>パスタ・テープ・ひもは切ってOK。<strong>マシュマロは切ってはいけません。</strong></p></li><li><b>05</b><p><strong>計測の最中も立っていなければ、記録になりません。</strong></p></li></ol>
+<div class="note yellow at" style="left:996px;top:700px;width:530px;font-size:24px;transform:rotate(2deg);padding:18px 24px">分からなくなったら、<br><strong>その場で聞いてください。</strong></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide materials" data-title="使うものは、これだけ。" aria-label="スライド：使うものは、これだけ。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">40 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">38 / MATERIALS</div><h1 class="at" style="left:76px;top:164px;font-size:72px">使うものは、<mark>これだけ。</mark></h1>
+<div class="mat-row"><div class="mat"><span class="mat-ico">🍝</span><b>20本</b><p>乾燥パスタ<br>（1.7mm）</p></div><div class="mat"><span class="mat-ico">🏷</span><b>90cm</b><p>マスキング<br>テープ</p></div><div class="mat"><span class="mat-ico">🧵</span><b>90cm</b><p>ひも</p></div><div class="mat"><span class="mat-ico">🍬</span><b>1つ</b><p>マシュマロ</p></div><div class="mat"><span class="mat-ico">✂️</span><b>1つ</b><p>はさみ</p></div></div>
+<div class="note pink at" style="left:80px;top:676px;width:700px;font-size:24px;transform:rotate(-1.5deg);padding:18px 26px">マシュマロは<strong>食べないでください。</strong>今日は資材です。<br>ゼラチンなどを含むので、心配な人は申し出てください。</div>
+<p class="caption at" style="left:840px;top:686px;width:680px">材料はチームごとに配ります。<br>足りなくなっても、追加はありません。<strong>使い方を考えるのも作戦のうち。</strong></p>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide measure" data-title="測るのは、ここ。" aria-label="スライド：測るのは、ここ。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">41 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">39 / HOW WE MEASURE</div><h1 class="at" style="left:76px;top:164px;font-size:76px">測るのは、<mark>ここ。</mark></h1>
+<svg class="tower-fig" viewBox="0 0 420 420"><path d="M60 380 H360 M120 380 L200 150 L280 380 M150 290 H250 M200 150 L200 120" stroke="#151515" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="200" cy="100" r="26" fill="#fff" stroke="#151515" stroke-width="4"/><path d="M392 380 V100" stroke="#c0392b" stroke-width="3" stroke-dasharray="7 7"/><path d="M382 380 H402 M382 126 H402" stroke="#c0392b" stroke-width="3"/><text x="300" y="250" font-size="22" fill="#c0392b" font-family="sans-serif">この高さ</text></svg>
+<div class="measure-card"><h3>机の面から、<br><mark>マシュマロの底まで</mark></h3><p>タワーの先端ではありません。<br>全チーム、同じ基準で測ります。</p><p class="measure-sub">※ Tom Wujec が紹介するルールでは上端まで測りますが、<br>今日は授業内の統一ルールとして底まで測ります。</p></div>
+<div class="note blue at" style="left:80px;top:712px;width:820px;font-size:24px;transform:rotate(-1deg);padding:16px 26px">チームは<strong>3限の演習Cのまま</strong>。チーム名を確認してください。</div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide go1" data-title="では、はじめます。" aria-label="スライド：では、はじめます。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">42 / 60</div>
+<div class="go-wrap"><div class="eyebrow">40 / CHALLENGE</div><h1>では、<mark>はじめます。</mark></h1><div class="go-time"><b>18</b><span>min</span></div><p class="go-lead">作戦タイムも含めて18分。<br>時間になったら、手を止めてください。</p></div>
+<div class="note yellow at" style="left:1006px;top:640px;width:500px;font-size:26px;transform:rotate(3deg);padding:20px 26px">立たないと、<br><strong>記録になりません。</strong></div>
+<svg class="doodle at" style="left:880px;top:560px;width:130px;height:110px" viewBox="0 0 130 110"><path d="M10 96 Q76 108 118 18 M92 30 L122 6 L128 46"/></svg>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide result1" data-title="記録を、残そう。" aria-label="スライド：記録を、残そう。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">43 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">41 / MEASURE & SHARE</div><h1 class="at" style="left:76px;top:164px;font-size:74px">記録を、<mark>残そう。</mark></h1>
+<div class="board"><div class="board-head">ホワイトボード</div><table class="board-table"><thead><tr><th>チーム</th><th>高さ</th><th>初めてマシュマロを載せた時間</th></tr></thead><tbody><tr><td>A</td><td class="fillcell">cm</td><td class="fillcell">分後</td></tr><tr><td>B</td><td class="fillcell">cm</td><td class="fillcell">分後</td></tr><tr><td>C</td><td class="fillcell">cm</td><td class="fillcell">分後</td></tr><tr><td>D</td><td class="fillcell">cm</td><td class="fillcell">分後</td></tr></tbody></table></div>
+<ul class="share-q"><li>🤔 どういう作戦だった？</li><li>👥 どんな役割分担？</li><li>✅ 何が良かった？</li><li>⚠️ 何が悪かった？ 何が難しかった？</li></ul>
+<p class="caption at" style="left:80px;top:766px;width:820px">1チーム2分ほどで。記録は消さずに残します。</p>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide timeq" data-title="時間の使い方を、思い出そう。" aria-label="スライド：時間の使い方を、思い出そう。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">44 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">42 / HOW YOU SPENT THE TIME</div><h1 class="at" style="left:76px;top:160px;font-size:58px">時間の使い方を、<br><mark>思い出そう。</mark></h1>
+<div class="tq tq1"><span class="tq-ico">⏱</span><b>作戦を相談していたのは、<br>何分くらい？</b></div>
+<div class="tq tq2"><span class="tq-ico">🍬</span><b>初めてマシュマロを載せたのは、<br>開始から何分後？</b><small>載せずに終わったチームは「なし」</small></div>
+<div class="tq tq3"><span class="tq-ico">💥</span><b>崩れたのは何分後？<br>そのあと、直す時間は残っていた？</b></div>
+<div class="note yellow at" style="left:80px;top:712px;width:900px;font-size:25px;transform:rotate(-1deg);padding:16px 26px">「初めて載せた時間」も、<strong>ホワイトボードに並べて書きます。</strong></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide what-was" data-title="これは、開発でした。" aria-label="スライド：これは、開発でした。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">45 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">43 / WHAT WE WERE DOING</div><h1 class="at" style="left:76px;top:164px;font-size:76px">これは、<mark>開発でした。</mark></h1>
+<div class="was-grid"><div class="was"><span>🎯 顧客ニーズ</span><p>マシュマロをより高く掲げるタワー</p></div><div class="was"><span>🍝 手段</span><p>パスタ・テープ・ひも</p></div><div class="was"><span>🛠 解決方法</span><p>試行錯誤してタワーを立てる</p></div><div class="was"><span>⏱ 締切</span><p>18分</p></div></div>
+<div class="was-concl"><p>➡️ これは<strong>ソリューション開発</strong>であり、<br><strong>ソフトウェア開発</strong>であり、<strong>アジャイル開発</strong>でもあります。</p></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide ws-scrum" data-title="言葉を、置き換えてみる。" aria-label="スライド：言葉を、置き換えてみる。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">46 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">44 / SAME STRUCTURE</div><h1 class="at" style="left:76px;top:162px;font-size:62px">言葉を、<mark>置き換えてみる。</mark></h1>
+<table class="pair-table ws-table"><thead><tr><th>マシュマロチャレンジ</th><th>スクラム開発</th></tr></thead><tbody>
+<tr><td>制限時間内に高いタワーを構築する</td><td>スプリント内で成果物を完成させる</td></tr>
+<tr><td>試行錯誤を繰り返して最適な形を探る</td><td>スプリントごとにプロセスを改善し続ける</td></tr>
+<tr><td>役割分担とアイデア共有で成果を上げる</td><td>チーム内で協力し、全員が責任を共有する</td></tr>
+<tr><td>失敗しても新しい方法をすぐ試す</td><td>要件変更や課題に柔軟に対応する</td></tr>
+</tbody></table>
+<div class="mini-map"><div class="mm"><b>18分の区切り</b><span>＝ スプリント</span></div><div class="mm"><b>自立して、マシュマロが上にある</b><span>＝ 受け入れ条件・完成の定義</span></div><div class="mm"><b>計測</b><span>＝ 検証</span></div></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide premise" data-title="やってみるまで、分からない。" aria-label="スライド：やってみるまで、分からない。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">47 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">45 / THE PREMISE</div>
+<div class="premise-quote"><p class="pq-lead">アジャイル開発の前提は、1つです。</p><blockquote>事前にすべてを<br><mark>正確に予測し、計画することはできない</mark></blockquote></div>
+<div class="premise-body"><p>パスタは細く、マシュマロは思ったより重い。<br><strong>やってみるまで、分からなかったはずです。</strong></p><p class="pb-2">だから、<strong>小さく作って、早く確かめて、直す。</strong><br>これを繰り返します。</p></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide failfast" data-title="早く失敗すれば、直せる。" aria-label="スライド：早く失敗すれば、直せる。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">48 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">46 / FAIL FAST</div><h1 class="at" style="left:76px;top:160px;font-size:62px">早く失敗すれば、<br><mark>直す時間が残る。</mark></h1>
+<div class="ff-compare"><div class="ff early"><span class="ff-tag yellow">早く載せたチーム</span><ul><li>早い段階で「重い」「倒れる」と<b>分かった</b></li><li>分かってから<b>直す時間が残っていた</b></li></ul><div class="ff-bar"><span class="ff-test">試す</span><span class="ff-fix">直す時間</span></div></div>
+<div class="ff late"><span class="ff-tag dark">遅く載せたチーム</span><ul><li>最後まで<b>分からなかった</b></li><li>崩れたときには<b>時間がなかった</b></li></ul><div class="ff-bar"><span class="ff-build">作り込む</span><span class="ff-test2">試す</span></div></div></div>
+<div class="note yellow at" style="left:80px;top:672px;width:1000px;font-size:26px;transform:rotate(-1deg);padding:18px 26px">失敗そのものに価値があるのではありません。<br><strong>早く失敗すれば、直す時間が残る</strong>ということです。</div>
+<div class="hand at" style="left:1130px;top:722px;font-size:26px;width:400px;transform:rotate(2deg);line-height:1.6">「あと3分あれば<br>直せたのに」——<br>その感覚が Fail fast。</div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide mvp" data-title="まず、低い塔で確かめる。" aria-label="スライド：まず、低い塔で確かめる。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">49 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">47 / MVP</div><h1 class="at" style="left:76px;top:162px;font-size:62px">まず、<mark>低い塔で確かめる。</mark></h1>
+<div class="mvp-def"><b>MVP（Minimum Viable Product）</b><p>価値を確かめられる、<strong>最小限のもの</strong>を先に作る。</p><ul><li>🔄 早くフィードバックを得る</li><li>✅ 無駄を最小限にする</li><li>📉 リスクを減らす</li></ul><p class="mvp-warn">⚠️ 最小限すぎると、期待を満たせないこともある。</p></div>
+<div class="mvp-cases"><div class="mvp-case good"><span>先に低い塔で載せてみた</span><p>知らないうちに<strong>MVPを作っていた</strong>ことになります。</p></div><div class="mvp-case bad"><span>最後に載せて崩れた</span><p>「本当に立つかどうかの検証」を<strong>最後に回した</strong>ということです。</p></div><p class="mvp-soft">ソフトウェア開発でも、まったく同じことが起きます。<br>（完成間際に初めて動かして、動かない）</p></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide next-retro" data-title="振り返って、変える。" aria-label="スライド：振り返って、変える。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">50 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">48 / WHAT WE DO NEXT</div><h1 class="at" style="left:76px;top:170px;font-size:84px">振り返って、<br><mark>変える。</mark></h1>
+<p class="body-copy at" style="left:80px;top:452px;width:700px;font-size:26px">アジャイル開発では、スプリントが終わるたびに<br><strong>必ず振り返り（レトロスペクティブ）</strong>をして、<br>次の進め方を変えます。</p>
+<div class="retro-flow"><div class="rf">やってみる</div><div class="rf-arrow">→</div><div class="rf">確かめる</div><div class="rf-arrow">→</div><div class="rf hl">振り返る</div><div class="rf-arrow">→</div><div class="rf">変えて、もう一度</div></div>
+<div class="note yellow at" style="left:1020px;top:250px;width:500px;font-size:26px;transform:rotate(3deg);padding:20px 26px">いまから、<br><strong>それをやります。</strong></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide retro1" data-title="4つ、書き出そう。" aria-label="スライド：4つ、書き出そう。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">51 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">49 / RETROSPECTIVE</div><h1 class="at" style="left:76px;top:164px;font-size:72px">4つ、<mark>書き出そう。</mark></h1>
+<div class="retro-sheet"><span class="tape"></span><ol><li><b>良かった点</b><span>続けること</span></li><li><b>悪かった点</b><span>やめること</span></li><li><b>気づき</b><span>分かったこと</span></li><li class="key"><b>次に、何を変える？</b><span>ここが一番大事</span></li></ol></div>
+<div class="retro-side"><div class="note pink" style="width:100%;position:static;transform:rotate(-1deg);font-size:24px;padding:18px 24px">4番は<strong>「具体的な行動」</strong>で。<br>「がんばる」は行動ではありません。</div><p class="caption" style="margin-top:28px;font-size:20px">さっきの話（MVP・早く確かめる・役割分担・ファシリテーション）を使って構いません。</p><p class="hand" style="font-size:26px;margin-top:22px">これが<strong style="font-family:Noto;font-weight:800">レトロスペクティブ</strong>です。<br>スプリントごとに、必ずやります。</p></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide go2" data-title="もう一度、やります。" aria-label="スライド：もう一度、やります。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">52 / 60</div>
+<div class="go-wrap"><div class="eyebrow">50 / CHALLENGE AGAIN</div><h1>もう一度、<mark>やります。</mark></h1><div class="go-time pinkbg"><b>18</b><span>min</span></div><p class="go-lead">同じルール、同じ材料、同じ18分。<br><strong>さっき決めた改善計画を、実行してください。</strong></p></div>
+<div class="note yellow at" style="left:1006px;top:640px;width:500px;font-size:26px;transform:rotate(-3deg);padding:20px 26px">変えると決めたことを、<br><strong>ちゃんと変える。</strong></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide result2" data-title="1回目と、並べてみる。" aria-label="スライド：1回目と、並べてみる。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">53 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">51 / COMPARE THE RECORDS</div><h1 class="at" style="left:76px;top:162px;font-size:66px">1回目と、<mark>並べてみる。</mark></h1>
+<table class="round-table"><thead><tr><th>チーム</th><th>#1</th><th>#2</th><th>変えたこと</th></tr></thead><tbody><tr><td>A</td><td class="fillcell">cm</td><td class="fillcell b-col">cm</td><td></td></tr><tr><td>B</td><td class="fillcell">cm</td><td class="fillcell b-col">cm</td><td></td></tr><tr><td>C</td><td class="fillcell">cm</td><td class="fillcell b-col">cm</td><td></td></tr><tr><td>D</td><td class="fillcell">cm</td><td class="fillcell b-col">cm</td><td></td></tr></tbody></table>
+<ul class="share-q q2"><li>記録は伸びましたか？</li><li><b>伸びた分は、何によって生まれましたか？</b><span>材料もルールも時間も、2回とも同じでした。</span></li><li>変えた行動のうち、効いたのはどれですか？</li><li>下がったチームは、何が原因だと思いますか？</li></ul>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide ted" data-title="幼稚園児の方が、うまい。" aria-label="スライド：幼稚園児の方が、うまい。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">54 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">52 / WHAT RESEARCH SHOWS</div><h1 class="at" style="left:76px;top:162px;font-size:62px">幼稚園児の方が、<mark>うまい。</mark></h1>
+<div class="ted-cards"><div class="ted-card"><span class="ted-ico">🧒</span><b>幼稚園児の方が、ビジネススクールの学生より結果が良い</b><p>幼稚園児は<strong>すぐ試して直す。</strong><br>学生は最初に「正解」を議論して、最後に一度だけ試す。</p></div><div class="ted-card"><span class="ted-ico">🙋</span><b>ファシリテーターがいると結果が良くなる</b><p>進め方を見ている人がいると、チームは動きやすい。<br>（＝スクラムマスター）</p></div><div class="ted-card"><span class="ted-ico">💰</span><b>賞金を出すと結果が悪くなる</b><p>報酬と成果の関係は、単純ではない。</p></div></div>
+<div class="note yellow at" style="left:80px;top:722px;width:1000px;font-size:25px;transform:rotate(-1deg);padding:16px 26px">みなさんの2回目は、1回目より<strong>「幼稚園児のやり方」に近づいていた</strong>でしょうか。</div>
+<p class="caption at" style="left:1116px;top:766px;width:410px;font-size:17px">Tom Wujec が TED で紹介した<br>世界中の実施結果より。</p>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide swing" data-title="伝わるたびに、形が変わる。" aria-label="スライド：伝わるたびに、形が変わる。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">55 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">53 / WHAT THE CUSTOMER REALLY NEEDED</div><h1 class="at" style="left:76px;top:160px;font-size:58px">伝わるたびに、<br><mark>形が変わる。</mark></h1>
+<div class="swing-row"><div class="sw"><span>お客さんが<br>説明したもの</span><svg viewBox="0 0 120 130"><path d="M20 10 H100 M30 10 V60 M90 10 V60 M30 60 H90 M60 60 V95" stroke="#151515" stroke-width="3" fill="none"/><ellipse cx="60" cy="108" rx="30" ry="12" stroke="#151515" stroke-width="3" fill="none"/></svg></div><div class="sw"><span>設計されたもの</span><svg viewBox="0 0 120 130"><path d="M20 10 H100 M35 10 V95 M85 10 V40" stroke="#151515" stroke-width="3" fill="none"/><ellipse cx="35" cy="108" rx="28" ry="12" stroke="#151515" stroke-width="3" fill="none"/></svg></div><div class="sw"><span>作られたもの</span><svg viewBox="0 0 120 130"><path d="M20 10 H100 M60 10 V50" stroke="#151515" stroke-width="3" fill="none"/><rect x="40" y="50" width="40" height="30" stroke="#151515" stroke-width="3" fill="none"/></svg></div><div class="sw hl"><span>本当に必要<br>だったもの</span><svg viewBox="0 0 120 130"><path d="M25 22 Q60 -2 95 22 M60 22 V70" stroke="#151515" stroke-width="3" fill="none"/><path d="M36 70 H84 L84 92 H36 Z" stroke="#151515" stroke-width="3" fill="none"/></svg></div></div>
+<div class="note yellow at" style="left:80px;top:676px;width:860px;font-size:25px;transform:rotate(-1deg);padding:18px 26px">3限の演習Aで起きたことと同じです。<br><strong>条件を書き留めないと、これが起きます。</strong></div>
+<p class="caption at" style="left:980px;top:724px;width:546px">有名な風刺画「顧客が本当に必要だったもの」より。<br><a href="https://www.businessballs.com/amusement-stress-relief/tree-swing-cartoon-pictures-early-versions/" target="_blank" rel="noopener">Early Tree Swing Cartoons ↗</a></p>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide bridge-back" data-title="今日やったことを、並べる。" aria-label="スライド：今日やったことを、並べる。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">56 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">54 / CONNECTING THE DOTS</div><h1 class="at" style="left:76px;top:162px;font-size:60px">今日やったことを、<mark>並べる。</mark></h1>
+<table class="pair-table bridge-table"><thead><tr><th>マシュマロチャレンジ</th><th>開発で対応する考え方</th></tr></thead><tbody>
+<tr><td>立っているタワー</td><td><b>利用可能な成果物</b>（ソフトウェアでは動くソフトウェア）</td></tr>
+<tr><td>「自立して、マシュマロが上にある」</td><td><b>受け入れ条件</b></td></tr>
+<tr><td>計測</td><td><b>検証</b></td></tr>
+<tr><td>18分の区切り（×2回）</td><td><b>短い一定期間で取り組む</b>（スクラムではスプリント）</td></tr>
+<tr><td>振り返り #1</td><td><b>進め方の検査と改善</b>（レトロスペクティブ）</td></tr>
+<tr><td>改善計画を実行して、結果を確かめた</td><td><b>反復による学習</b></td></tr>
+</tbody></table>
+<div class="note yellow at" style="left:336px;top:756px;width:1190px;font-size:24px;transform:rotate(-.8deg);padding:16px 26px">3限では<strong>要求を共有・記録・確認すること</strong>を、4限では<strong>振り返りを次の行動に生かすこと</strong>を体験しました。</div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide closing" data-title="速く、失敗しよう。" aria-label="スライド：速く、失敗しよう。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">57 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">55 / CLOSING</div><h1 class="at" style="left:76px;top:166px;font-size:78px">速く、<mark>失敗しよう。</mark></h1>
+<div class="quote-list"><div class="q"><b>“Fail fast”</b><p>速く失敗せよ</p><span>シリコンバレーのスタートアップ文化 ／ <strong>今日、体で味わったもの</strong></span></div><div class="q"><b>“Done is better than perfect”</b><p>完璧を目指すより、まず終わらせろ</p><span>Mark Zuckerberg</span></div><div class="q"><b>“If you want to go fast, go alone.<br>If you want to go far, go together.”</b><p>早く行きたければ一人で行け、遠くへ行きたければみんなで行け</p><span>アフリカのことわざ</span></div></div>
+<div class="hand at" style="left:1080px;top:742px;font-size:27px;width:450px;transform:rotate(-2deg);line-height:1.65">結果が伸びたかどうかより、<br><strong style="font-family:Noto;font-weight:800">何を変え、何が分かったか</strong>。</div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide submit" data-title="出すものは、2つ。" aria-label="スライド：出すものは、2つ。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">58 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">56 / SUBMISSION</div><h1 class="at" style="left:76px;top:164px;font-size:74px">出すものは、<mark>2つ。</mark></h1>
+<div class="sub-card s-a"><span class="sub-no">01</span><h3>演習Bの仕様書（spec.md）</h3><p>自分たちで書いた<strong>受け入れ条件</strong>が入ったもの。<br>実装が未完了でも、作成・レビューした仕様書を出してください。<br>サンプルを使った場合は、その旨を添えます。</p></div>
+<div class="sub-card s-b"><span class="sub-no">02</span><h3>振り返り</h3><pre>0. 名前・チーム名
+1. 感想
+2. 学び
+3. 改善点</pre></div>
+<div class="note yellow at" style="left:80px;top:684px;width:900px;font-size:25px;transform:rotate(-1deg);padding:18px 26px">提出先は<strong>Slackの第2回 提出用スレッド</strong>。期限は<strong>第3回の前日まで</strong>。<br>具体的な日付と締切時刻は、スレッドに書きます。</div>
+<p class="caption at" style="left:1020px;top:726px;width:506px">事後学習：方法論の使い分けの観点を整理する／<br>チーム開発で意識すべき点を3つ決める。</p>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide nexttime" data-title="次は、ユーザーを知る。" aria-label="スライド：次は、ユーザーを知る。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">59 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">57 / NEXT</div><h1 class="at" style="left:76px;top:166px;font-size:70px">次は、<mark>ユーザーを知る。</mark></h1>
+<div class="next-card n1"><span class="next-no">03</span><h3>デザイン思考を用いた<br>ユーザー中心のデザイン</h3><p>ユーザーを理解し、<strong>何を作るべきか</strong>を考える方法を学びます。</p><span class="next-who">担当：竹田</span></div>
+<div class="next-card n2"><span class="next-no">04</span><h3>ソリューショニングと<br>プロトタイピング</h3><p>今日の<strong>仕様の共有</strong>と<strong>反復</strong>を、チームでの設計・開発に生かします。</p><span class="next-who">担当：小島</span></div>
+<div class="hand at" style="left:80px;top:716px;font-size:28px;width:700px;line-height:1.7">今日 spec.md がファイルとして残った意味は、<br>第4回で分かります。</div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+<section class="slide refs" data-title="もっと知りたい人へ。" aria-label="スライド：もっと知りたい人へ。" hidden><header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header><div class="page-tag">60 / 60</div>
+<div class="eyebrow at" style="left:76px;top:122px">58 / REFERENCES</div><h1 class="at" style="left:76px;top:164px;font-size:70px">もっと、<mark>知りたい人へ。</mark></h1>
+<div class="ref-col r-left"><span class="ref-h">開発方法論</span><ul><li><a href="https://agilemanifesto.org/iso/ja/manifesto.html" target="_blank" rel="noopener">アジャイルソフトウェア開発宣言 ↗</a></li><li><a href="https://scrumguides.org/scrum-guide.html" target="_blank" rel="noopener">Scrum Guide ↗</a></li><li><a href="https://martinfowler.com/bliki/ContinuousDelivery.html" target="_blank" rel="noopener">Martin Fowler: Continuous Delivery ↗</a></li><li><a href="https://theleanstartup.com/principles" target="_blank" rel="noopener">The Lean Startup: Principles ↗</a></li></ul></div>
+<div class="ref-col r-right"><span class="ref-h">今日つかったもの</span><ul><li><a href="https://antigravity.google/download#antigravity-ide" target="_blank" rel="noopener">Antigravity IDE ↗</a></li><li><a href="https://github.com/github/spec-kit" target="_blank" rel="noopener">GitHub Spec Kit ↗</a></li><li><a href="https://www.tomwujec.com/marshmallow-challenge" target="_blank" rel="noopener">Marshmallow Challenge ↗</a></li><li><a href="../README.md">第2回の授業資料（README）↗</a></li></ul></div>
+<div class="note yellow at" style="left:80px;top:724px;width:1000px;font-size:25px;transform:rotate(-1deg);padding:18px 26px">分からないことは、<strong>Slackでいつでも聞いてください。</strong></div>
+<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer></section>
+</div></main><nav aria-label="スライド操作"><button id="prev" aria-label="前のスライド">← 前へ</button><label><input id="page" type="number" min="1" max="60" value="1" aria-label="スライド番号"> / 60</label><button id="next" aria-label="次のスライド">次へ →</button><button id="fullscreen">全画面</button><a href="review.html">一覧</a><span class="help">← → / Space：移動 · F：全画面 · H：操作バー</span></nav><span id="status" class="sr-only" aria-live="polite"></span><noscript>ページ操作にはJavaScriptが必要です。<a href="review.html">画像一覧はこちら</a></noscript><script src="viewer.js"></script></body></html>
