@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>グループワーク用タイマー</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0 auto; padding: 24px; max-width: 1100px; font-family: system-ui, sans-serif; color: #172033; background: #f3f5f8; }
+  h1 { font-size: 1.7rem; }
+  #timers { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  section { padding: 20px; border: 2px solid #c4cbd5; border-radius: 12px; background: white; }
+  section.warning { background: #fff2bd; border-color: #926300; }
+  section.overdue { background: #ffe3e3; border-color: #a52424; }
+  .time { display: block; margin: 20px 0 8px; font: bold 3rem ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+  .status { min-height: 1.5em; }
+  input { width: 100px; padding: 8px; font: inherit; }
+  button { padding: 10px; margin: 4px 0; font: inherit; cursor: pointer; }
+  button:disabled { cursor: default; }
+  #audio-status { min-height: 1.5em; }
+</style>
+</head>
+<body>
+<h1>グループワーク用タイマー</h1>
+<p>チームごとに時間を設定して開始してください。残り3分以下は黄色、時間超過は赤色で表示します。</p>
+<p>設定はリセット後に変更できます。ブラウザを閉じたり再読み込みしたりすると、計測は失われます。</p>
+<button id="sound-test" type="button">音を試す</button>
+<p id="audio-status" role="status">開始前に音量と出力先を確認してください。</p>
+<main id="timers"></main>
+<script>
+'use strict';
+let audioContext;
+const audioStatus = document.getElementById('audio-status');
+async function prepareAudio() {
+  try {
+    const Audio = window.AudioContext || window.webkitAudioContext;
+    if (!Audio) throw new Error('Audio unavailable');
+    audioContext ||= new Audio();
+    if (audioContext.state !== 'running') await audioContext.resume();
+    if (audioContext.state !== 'running') throw new Error('Audio suspended');
+    audioStatus.textContent = '音の準備ができました。端末の音量と出力先も確認してください。';
+    return true;
+  } catch {
+    audioStatus.textContent = '音を有効にできませんでした。「音を試す」を押し、ブラウザの設定も確認してください。';
+    return false;
+  }
+}
+function beep() {
+  if (!audioContext || audioContext.state !== 'running') {
+    audioStatus.textContent = '音が無効です。「音を試す」を押し、音量とブラウザの設定を確認してください。';
+    return;
+  }
+  const oscillator = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+  oscillator.frequency.value = 880;
+  gain.gain.setValueAtTime(0.15, audioContext.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5);
+  oscillator.connect(gain);
+  gain.connect(audioContext.destination);
+  oscillator.start();
+  oscillator.stop(audioContext.currentTime + 0.5);
+}
+document.getElementById('sound-test').addEventListener('click', async () => {
+  if (await prepareAudio()) beep();
+});
+function formatTime(ms) {
+  const seconds = Math.ceil(ms / 1000);
+  const absolute = Math.abs(seconds);
+  return `${seconds < 0 ? '-' : ''}${String(Math.floor(absolute / 60)).padStart(2, '0')}:${String(absolute % 60).padStart(2, '0')}`;
+}
+const timers = [1, 2, 3].map(number => {
+  const card = document.createElement('section');
+  card.setAttribute('aria-labelledby', `team-${number}`);
+  card.innerHTML = `
+    <h2 id="team-${number}">チーム${number}</h2>
+    <label for="duration-${number}">設定時間（秒）</label>
+    <input id="duration-${number}" type="number" min="1" max="86400" step="1" value="300" required>
+    <output class="time" aria-label="チーム${number}の残り時間">05:00</output>
+    <p class="status" role="status">未開始</p>
+    <button class="toggle" type="button">開始</button>
+    <button class="reset" type="button">リセット</button>`;
+  document.getElementById('timers').appendChild(card);
+  const input = card.querySelector('input');
+  const display = card.querySelector('output');
+  const status = card.querySelector('.status');
+  const toggle = card.querySelector('.toggle');
+  const timer = { remaining: 300000, deadline: 0, running: false, started: false, notified: false };
+  function render() {
+    display.textContent = formatTime(timer.remaining);
+    card.classList.toggle('warning', timer.remaining > 0 && timer.remaining <= 180000);
+    card.classList.toggle('overdue', timer.remaining <= 0);
+    const phase = timer.remaining <= 0 ? '時間終了・超過' : timer.remaining <= 180000 ? '残り3分以下' : '計測中';
+    const message = !timer.started ? '未開始' : timer.running ? phase : `一時停止（${phase}）`;
+    if (status.textContent !== message) status.textContent = message;
+    toggle.textContent = timer.running ? '一時停止' : timer.started ? '再開' : '開始';
+    input.disabled = timer.started;
+  }
+  function update(now) {
+    if (timer.running) {
+      timer.remaining = timer.deadline - now;
+      if (timer.remaining <= 0 && !timer.notified) {
+        timer.notified = true;
+        beep();
+      }
+    }
+    render();
+  }
+  input.addEventListener('input', () => {
+    if (input.checkValidity()) {
+      timer.remaining = Number(input.value) * 1000;
+      render();
+    }
+  });
+  toggle.addEventListener('click', () => {
+    const now = performance.now();
+    if (timer.running) {
+      update(now);
+      timer.running = false;
+    } else {
+      if (!timer.started) {
+        if (!input.reportValidity()) return;
+        timer.remaining = Number(input.value) * 1000;
+      }
+      void prepareAudio();
+      timer.started = true;
+      timer.running = true;
+      timer.deadline = now + timer.remaining;
+    }
+    render();
+  });
+  card.querySelector('.reset').addEventListener('click', () => {
+    if (!window.confirm(`チーム${number}のタイマーを設定時間に戻しますか？`)) return;
+    timer.running = false;
+    timer.started = false;
+    timer.notified = false;
+    timer.remaining = (input.checkValidity() ? Number(input.value) : 300) * 1000;
+    render();
+  });
+  return { update };
+});
+setInterval(() => {
+  const now = performance.now();
+  timers.forEach(timer => timer.update(now));
+}, 100);
+</script>
+</body>
+</html>

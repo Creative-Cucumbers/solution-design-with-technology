@@ -12,6 +12,6 @@
 4. `/speckit-implement` — 実装する
 5. 受け入れ条件を1つずつ確認する
 
-作られた `spec.md` / `plan.md` / `tasks.md` は `specs/` の下に残ります。提出物になるので消さないでください。
+作られた `spec.md` / `plan.md` / `tasks.md` は `specs/` の下に残ります。提出するのは、自分たちで作成・レビューした `spec.md` です。計画とタスクも振り返りに使えるので残してください。
 
-詳細は [../README.md](../README.md) を参照してください。
+詳細は [スターターの使い方](https://github.com/Creative-Cucumbers/solution-design-with-technology/blob/main/2026/2_software_development_methodology_agile/starter/README.md) を参照してください。
