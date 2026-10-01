@@ -247,9 +247,9 @@ nav{display:flex;justify-content:center;align-items:center;gap:12px;padding:10px
 .specsheet .feat li{display:flex;gap:18px;align-items:baseline;font-size:23px;line-height:1.6;padding:13px 0;border-bottom:1px dashed #c3c1b8}
 .specsheet .feat b{font:24px Archivo;color:#b6b0a2}
 .feat-note{font-size:20px;line-height:1.7;margin:0}
-.chip-c1{left:82px;top:360px;transform:rotate(-3deg)}
-.chip-c2{left:82px;top:500px;transform:rotate(1deg);background:var(--yellow)}
-.chip-c3{left:82px;top:640px;transform:rotate(-2deg)}
+.chip-c1{left:82px;top:300px;transform:rotate(-3deg)}
+.chip-c2{left:82px;top:440px;transform:rotate(1deg);background:var(--yellow)}
+.chip-c3{left:82px;top:580px;transform:rotate(-2deg)}
 /* ---- 27 no guide ---- */
 .open-q{position:absolute;left:660px;top:230px;width:760px;padding:36px 40px;background:#fff;box-shadow:5px 8px 0 #dad8cf;transform:rotate(-1.5deg)}
 .open-q p{font-size:38px;font-weight:900;line-height:1.5;margin:0 0 22px;letter-spacing:-1.5px}
