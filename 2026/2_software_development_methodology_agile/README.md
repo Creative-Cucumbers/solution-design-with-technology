@@ -276,15 +276,15 @@
 
 ```mermaid
 graph LR
-    subgraph 一人〜小規模でも効く型
-        A1[仕様駆動開発<br/>SDD]
-        A2[テスト駆動開発<br/>TDD]
+    subgraph solo["一人〜小規模でも効く型"]
+        A1["仕様駆動開発<br/>SDD"]
+        A2["テスト駆動開発<br/>TDD"]
     end
-    subgraph チームで効く型
-        B1[ウォーターフォール]
-        B2[アジャイル<br/>スクラム / XP]
-        B3[リーン]
-        B4[DevOps]
+    subgraph team["チームで効く型"]
+        B1["ウォーターフォール"]
+        B2["アジャイル<br/>スクラム / XP"]
+        B3["リーン"]
+        B4["DevOps"]
     end
     classDef default fill:#f3f4f6,stroke:#1f2937,color:#111827;
 ```
