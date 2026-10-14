@@ -6,7 +6,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -26,5 +27,5 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
-
-
+# Generated lecture export (large binary; regenerate with slides/render.cjs)
+2026/4_solutioning_and_prototyping/slides/slides.pdf
