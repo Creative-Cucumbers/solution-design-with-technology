@@ -2,11 +2,11 @@
 
 16:9（1600×900のレイアウト、PNGは1920×1080）。第2回の紙面、黒・黄色、淡色の紙片、太い日本語見出し、手書き注記を引き継いだ編集可能なHTMLスライドです。
 
-- [スライドを表示](index.html)
-- [レビュー用一覧](review.html)
-- [一覧画像](previews/overview.png)
-- [PDF（65ページ）](slides.pdf)
-- [資料・コピー用プロンプト](workbook.html)
+- [スライドを表示](https://creative-cucumbers.github.io/solution-design-with-technology/2026/4_solutioning_and_prototyping/slides/index.html)
+- [レビュー用一覧](https://creative-cucumbers.github.io/solution-design-with-technology/2026/4_solutioning_and_prototyping/slides/review.html)
+- [一覧画像](https://creative-cucumbers.github.io/solution-design-with-technology/2026/4_solutioning_and_prototyping/slides/previews/overview.png)
+- [PDF（65ページ）](https://github.com/Creative-Cucumbers/solution-design-with-technology/blob/main/2026/4_solutioning_and_prototyping/slides/slides.pdf)
+- [資料・コピー用プロンプト](https://creative-cucumbers.github.io/solution-design-with-technology/2026/4_solutioning_and_prototyping/slides/workbook.html)
 - [スライドと本文の対応表](slide-map.md)
 
 ## 構成

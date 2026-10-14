@@ -1,6 +1,6 @@
 # ソリューショニングとプロトタイピング
 
-[講義スライド（65枚）](./slides/index.html) ／ [レビュー用一覧](./slides/review.html) ／ [資料・コピー用プロンプト](./slides/workbook.html)
+[講義スライド（65枚）](https://creative-cucumbers.github.io/solution-design-with-technology/2026/4_solutioning_and_prototyping/slides/index.html) ／ [レビュー用一覧](https://creative-cucumbers.github.io/solution-design-with-technology/2026/4_solutioning_and_prototyping/slides/review.html) ／ [資料・コピー用プロンプト](https://creative-cucumbers.github.io/solution-design-with-technology/2026/4_solutioning_and_prototyping/slides/workbook.html)
 
 **今日の問い：担当者が違っても、変更を安全につなげられるか？**
 
