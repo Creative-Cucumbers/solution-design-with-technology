@@ -23,3 +23,16 @@ nav{display:flex;justify-content:center;align-items:center;gap:12px;padding:10px
 .s4 .takeaway{top:770px;font-size:23px;line-height:1.35}
 .s4-cover .s4-foot a{color:#fff}
 .s4 a{color:inherit;text-underline-offset:4px}
+.s4-roadmap .roadmap-lead{font-size:25px;line-height:1.7;width:760px}
+.s4-roadmap .roadmap-note{position:absolute;right:30px;top:0;background:var(--yellow);padding:18px 25px;transform:rotate(5deg);font:25px/1.6 Hand}
+.s4-roadmap .route-line{left:0;top:360px;width:1410px;transform:rotate(-5deg)}
+.s4-roadmap .route{width:187px;background:#f9f8f4;transform:rotate(-4deg)}
+.s4-roadmap .route h3{font-size:21px;margin:12px 0;line-height:1.55}
+.s4-roadmap .route p{font-size:16px;line-height:1.6;margin-bottom:12px}
+.s4-roadmap .route .hand{font-size:18px;background:transparent;padding:0}
+.s4-roadmap .r1{left:0;top:190px}.s4-roadmap .r2{left:200px;top:174px}
+.s4-roadmap .r3{left:400px;top:158px}.s4-roadmap .r4{left:600px;top:142px;background:var(--yellow);transform:rotate(2deg)}
+.s4-roadmap .r5{left:800px;top:126px}.s4-roadmap .r6{left:1000px;top:110px}.s4-roadmap .r7{left:1200px;top:94px}
+.s4-roadmap .r4 .hand{background:#fff9a4;padding:2px}
+.s4-clock b{overflow-wrap:normal}
+.s4-steps strong{line-height:1.4}
