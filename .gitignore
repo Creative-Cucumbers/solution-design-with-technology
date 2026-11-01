@@ -29,3 +29,6 @@ Temporary Items
 .apdisk
 # Generated lecture export (large binary; regenerate with slides/render.cjs)
 2026/4_solutioning_and_prototyping/slides/slides.pdf
+
+# 第6-7回の参照用講義資料（第3回・第5回のPDF。原本は各回ディレクトリ／手元参照用）
+2026/6_case_study_design_and_exercise/references/

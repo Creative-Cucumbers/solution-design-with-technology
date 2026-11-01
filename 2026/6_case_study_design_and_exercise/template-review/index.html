@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Solution Design with Technology 2026 第6・7回 成果物テンプレートの改訂案。pptx全11枚をレイアウトそのままHTML化し、修正点と理由を併記。">
+<title>成果物テンプレート 改訂案</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<style>
+  /* ===== パレット：pptx の theme1.xml から取得（変更していない） =====
+     dk1 #1B212C / lt1 #FFFFFF / lt2 #82C7A5 / accent1 #0145AC / 罫 #55688B */
+  :root{
+    --deck-bg:#1B212C;
+    --deck-fg:#FFFFFF;
+    --deck-blue:#0145AC;
+    --deck-green:#82C7A5;
+    --deck-rule:#55688B;
+
+    --shell:#0E1218;
+    --shell-2:#151B24;
+    --edge:#232C3A;
+    --meta:#8E9BB2;
+    --meta-dim:#5F6B7F;
+
+    --jp:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,"Noto Sans JP",sans-serif;
+    --deck-face:Arial,Helvetica,var(--jp);
+    --ui:"Montserrat",var(--jp);
+  }
+  html{color-scheme:dark}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--shell);
+    color:var(--deck-fg);
+    font-family:var(--ui);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ===== ページ外枠（スライドの外側。デッキのデザインには含まれない） ===== */
+  .wrap{max-width:1000px;margin:0 auto;padding-inline:20px;padding-block:0 72px}
+
+  header.top{
+    position:sticky;top:0;z-index:20;
+    background:color-mix(in srgb,var(--shell) 92%,transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--edge);
+    margin-inline:-20px;padding-inline:20px;
+  }
+  .top-in{
+    max-width:1000px;margin:0 auto;
+    display:flex;flex-wrap:wrap;gap:12px 20px;align-items:baseline;
+    padding-block:14px;
+  }
+  .top h1{
+    font-size:15px;font-weight:600;letter-spacing:.02em;margin:0;
+    font-family:var(--ui);
+  }
+  .top .sub{font-size:12px;color:var(--meta);margin:0}
+  .top .spacer{flex:1 1 auto;min-width:0}
+  .toggle{
+    font:inherit;font-size:12px;letter-spacing:.04em;
+    color:var(--deck-fg);background:transparent;
+    border:1px solid var(--edge);border-radius:2px;
+    padding:6px 12px;cursor:pointer;white-space:nowrap;
+  }
+  .toggle:hover{border-color:var(--deck-rule)}
+  .toggle:focus-visible{outline:2px solid var(--deck-green);outline-offset:2px}
+
+  .intro{padding-block:36px 8px;max-width:62ch}
+  .intro p{font-size:13.5px;line-height:1.85;color:var(--meta);margin:0 0 12px}
+  .intro strong{color:var(--deck-fg);font-weight:500}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px;font-size:11.5px;color:var(--meta-dim)}
+  .legend span{display:flex;align-items:center;gap:7px}
+  .swatch{width:9px;height:9px;flex:none}
+  .swatch.ch{background:var(--deck-green)}
+  .swatch.no{background:var(--meta-dim)}
+
+  /* ===== スライド：720×405pt を原寸比で再現 ===== */
+  .deck{display:flex;flex-direction:column;gap:44px;margin-top:36px}
+  figure.slide-row{margin:0;display:flex;flex-direction:column;gap:0}
+
+  .stage{
+    container-type:inline-size;
+    width:100%;
+    border:1px solid var(--edge);
+    border-bottom:none;
+  }
+  .slide{
+    --u:calc(100cqw / 720);          /* 1 単位 = pptx の 1pt */
+    position:relative;
+    width:100%;
+    aspect-ratio:720 / 405;
+    background:var(--deck-bg);
+    overflow:hidden;
+    font-family:var(--deck-face);
+    color:var(--deck-fg);
+  }
+  .b{position:absolute;left:calc(var(--l)*var(--u));top:calc(var(--t)*var(--u));width:calc(var(--w)*var(--u));height:calc(var(--h)*var(--u))}
+  .tx{
+    padding:calc(7.2*var(--u));
+    font-size:calc(var(--sz,13)*var(--u));
+    line-height:1.42;
+    white-space:pre-line;
+  }
+  .tx.title{font-size:calc(24*var(--u));line-height:1.3}
+  .tx.toc{font-family:"Montserrat",var(--jp);font-size:calc(14*var(--u));line-height:1.26}
+  .tx.toc.h{font-size:calc(24*var(--u))}
+  .tx.big{font-size:calc(40*var(--u));line-height:1.18}
+  .tx .lab{font-weight:700}
+  .tx .dim{color:#B9C3D4}
+  .num{
+    font-size:calc(10*var(--u));color:var(--meta-dim);
+    display:flex;align-items:flex-end;justify-content:flex-end;
+    padding:calc(7.2*var(--u));
+  }
+  .cap{font-size:calc(8*var(--u));color:#B9C3D4;text-align:right;padding-top:calc(2*var(--u))}
+
+  /* 角のマーク（layout TITLE_AND_BODY） */
+  .bar{background:var(--deck-rule)}
+  .tri{clip-path:polygon(0 0,100% 100%,0 100%)}
+  .tri.r{clip-path:polygon(0 0,100% 0,100% 100%)}
+  .tri.blue{background:var(--deck-blue)}
+  .tri.green{background:var(--deck-green)}
+  .faint{background:rgba(255,255,255,.073);clip-path:polygon(0 0,100% 0,100% 100%)}
+  .faint.big{background:rgba(255,255,255,.0346)}
+
+  .img{object-fit:cover;display:block}
+  .img.rt{clip-path:polygon(100% 0,100% 100%,0 100%)}
+  .img.rt-flip{clip-path:polygon(0 0,100% 0,0 100%)}
+  .ring{border:calc(1*var(--u)) solid rgba(255,255,255,.28);border-radius:50%}
+
+  /* ===== 各スライドの下の注記（スライドの外） ===== */
+  figcaption{
+    border:1px solid var(--edge);
+    background:var(--shell-2);
+    display:grid;grid-template-columns:auto auto 1fr;gap:4px 14px;align-items:baseline;
+    padding:11px 14px;
+    font-size:12px;
+  }
+  .sn{font-family:var(--ui);font-weight:600;letter-spacing:.06em;color:var(--meta);white-space:nowrap}
+  .day{
+    font-family:var(--ui);font-size:10.5px;letter-spacing:.08em;
+    color:var(--meta-dim);border:1px solid var(--edge);padding:2px 7px;white-space:nowrap;
+  }
+  .note{grid-column:1 / -1;line-height:1.75;color:var(--meta);font-family:var(--jp)}
+  .note.changed{color:#CFD8E6;border-left:2px solid var(--deck-green);padding-left:11px;margin-top:4px}
+  .note.same{color:var(--meta-dim);margin-top:4px}
+  .note b{color:var(--deck-green);font-weight:500}
+  body.clean figcaption .note{display:none}
+  body.clean figcaption{padding-block:9px}
+
+  footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--edge);font-size:12px;line-height:1.9;color:var(--meta-dim);max-width:62ch}
+  footer code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;color:var(--meta)}
+
+  @media (max-width:560px){
+    .top-in{padding-block:11px}
+    .intro{padding-block:26px 4px}
+    figcaption{grid-template-columns:auto 1fr}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div>
+      <h1>成果物テンプレート 改訂案</h1>
+      <p class="sub">Solution Design with Technology 2026 ／ 第6・7回</p>
+    </div>
+    <div class="spacer"></div>
+    <button class="toggle" id="t" type="button" aria-pressed="false">変更メモを隠す</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="intro">
+    <p><code style="font-family:ui-monospace,Menlo,monospace;font-size:12px">Solution Design With Technology.pptx</code> の全11枚を、レイアウト・配色・書体をそのままHTMLに起こしたものです。<strong>デザインは変更していません。</strong>位置と文字サイズは pptx の値（720×405pt、背景 #1B212C、本文13pt、見出し24pt）をそのまま使っています。</p>
+    <p>変えたのは<strong>記入欄の中身だけ</strong>で、アウトライン v0.2 の10節に挙げた11項目に対応します。各スライドの下に、何をどう変えたかを書いています。</p>
+    <div class="legend">
+      <span><i class="swatch ch"></i>記入欄を変更したスライド</span>
+      <span><i class="swatch no"></i>変更なし</span>
+    </div>
+  </section>
+
+  <div class="deck">
+
+    <!-- ============ 1 ============ -->
+    <figure class="slide-row">
+      <div class="stage"><div class="slide">
+        <img class="b img rt" style="--l:0;--t:0;--w:406.1;--h:405;opacity:.66" src="assets/title-bg.jpg" alt="">
+        <img class="b img rt-flip" style="--l:549.4;--t:0;--w:170.6;--h:158.5;opacity:.31" src="assets/title-corner.jpg" alt="">
+        <div class="b tri blue" style="--l:0.5;--t:-0.4;--w:180.4;--h:181.1"></div>
+        <div class="b tri r green" style="--l:51.4;--t:45.4;--w:181.1;--h:180.4;opacity:.92"></div>
+        <div class="b tx big" style="--l:278.5;--t:124.3;--w:395.1;--h:124.3">Solution Design
+with Technology
+最終課題</div>
+        <div class="b tx" style="--l:400.3;--t:309;--w:297.3;--h:48">チーム名:
+メンバー（氏名・学籍番号）:</div>
+        <div class="b num" style="--l:667.1;--t:367.2;--w:43.2;--h:31">1</div>
+      </div></div>
+      <figcaption>
+        <span class="sn">スライド 1</span><span class="day">表紙</span>
+        <p class="note changed"><b>修正1</b>　「名前／学籍番号」を <b>「チーム名／メンバー（氏名・学籍番号）」</b> に変更。5チーム編成（2名×4＋3名×1）に合わせ、メンバー全員分を書く欄にしました。</p>
+      </figcaption>
+    </figure>
+
+    <!-- ============ 2 ============ -->
+    <figure class="slide-row">
+      <div class="stage"><div class="slide">
+        <div class="b faint big" style="--l:347.1;--t:-0.1;--w:372.8;--h:373"></div>
+        <div class="b faint" style="--l:442.4;--t:97.4;--w:63.7;--h:63.7"></div>
+        <div class="b faint" style="--l:460.6;--t:113.7;--w:63.7;--h:63.7"></div>
+        <div class="b faint" style="--l:471.4;--t:194.4;--w:63.7;--h:63.7"></div>
+        <div class="b faint" style="--l:489.9;--t:210.8;--w:63.7;--h:63.7"></div>
+        <div class="b faint" style="--l:525.6;--t:146.6;--w:63.7;--h:63.7"></div>
+        <div class="b faint" style="--l:543.9;--t:163;--w:63.7;--h:63.7"></div>
+        <div class="b faint" style="--l:540.2;--t:195.1;--w:63.7;--h:63.7"></div>
+        <div class="b faint" style="--l:627.2;--t:212;--w:63.7;--h:63.7"></div>
+        <div class="b faint" style="--l:641.3;--t:260.5;--w:63.7;--h:63.7"></div>
+        <div class="b faint" style="--l:554.9;--t:243.7;--w:63.7;--h:63.7"></div>
+        <div class="b faint" style="--l:573;--t:260;--w:63.7;--h:63.7"></div>
+        <div class="b faint" style="--l:569.1;--t:292.2;--w:63.7;--h:63.7"></div>
+        <div class="b faint" style="--l:587.6;--t:308.5;--w:63.7;--h:63.7"></div>
+        <div class="b faint" style="--l:638;--t:292.8;--w:63.7;--h:63.7"></div>
+        <div class="b faint" style="--l:656.3;--t:309.1;--w:63.7;--h:63.7"></div>
+        <div class="b faint" style="--l:652.6;--t:341.3;--w:63.7;--h:63.7"></div>
+        <div class="b tx toc h" style="--l:102.2;--t:89.2;--w:554.2;--h:38.4">目次</div>
+        <div class="b tx toc" style="--l:101.9;--t:162.6;--w:280;--h:175">課題の背景と目的
+ユーザリサーチ結果
+ペルソナ
+着目した課題
+ソリューションアイディア
+要件定義
+アーキテクチャ図
+プロトタイプ
+感想と考察</div>
+        <div class="b num" style="--l:667.1;--t:367.2;--w:43.2;--h:31">2</div>
+      </div></div>
+      <figcaption>
+        <span class="sn">スライド 2</span><span class="day">目次</span>
+        <p class="note changed"><b>修正2</b>　<b>「ストリーボード」「ユーザーストーリーマップ」を削除</b>（対応するスライドが存在せず、第3回・第5回でもテンプレートとして教えていないため）。かわりに実在する <b>「ユーザリサーチ結果」「着目した課題」「ソリューションアイディア」「要件定義」</b> を追記し、9項目をスライド順に並べました。</p>
+      </figcaption>
+    </figure>
+
+    <!-- ============ 3 ============ -->
+    <figure class="slide-row">
+      <div class="stage"><div class="slide">
+        <div class="b bar" style="--l:16.7;--t:17.5;--w:17.3;--h:1.5"></div>
+        <div class="b bar" style="--l:16.7;--t:22.4;--w:17.3;--h:1.5"></div>
+        <div class="b bar" style="--l:16.7;--t:27.3;--w:17.3;--h:1.5"></div>
+        <div class="b tri blue" style="--l:0;--t:30;--w:63.7;--h:63.7"></div>
+        <div class="b tri r green" style="--l:18;--t:46.3;--w:63.7;--h:63.7;opacity:.92"></div>
+        <div class="b tx title" style="--l:102.2;--t:31;--w:554.2;--h:72">課題の背景と目的</div>
+        <div class="b tx" style="--l:76.6;--t:111.7;--w:636.2;--h:250.9;--sz:14"><span class="lab">背景:</span>　<span class="dim">選んだテーマ（10テーマから一つ）と、対象の職種・場面を書く。</span>
+　　　<span class="dim">例：「宿泊施設で働く人 ／ フロント担当 ／ 部屋の状態共有」</span>
+
+<span class="lab">目的:</span>　<span class="dim">その人の仕事が、テクノロジーによってどう良くなるのかを書く。</span>
+
+<span class="lab">課題:</span>　<span class="dim">「○○（対象の職種）の△△（場面）を支えるソリューションの提案とプロトタイプ開発」</span>
+
+<span class="lab">このテーマを選んだ理由:</span></div>
+        <div class="b num" style="--l:667.1;--t:367.2;--w:43.2;--h:31">3</div>
+      </div></div>
+      <figcaption>
+        <span class="sn">スライド 3</span><span class="day">Day1</span>
+        <p class="note changed"><b>修正3</b>　記入済みだった「地域の高齢者の生活の質を向上させるアプリ」の文面を<b>すべて削除し、記入欄に差し替え</b>。テーマは講師が提示する10候補から各チームが選ぶ方式（重複なし・早い者勝ち）になったためです。背景／目的／課題という元の3段構成は維持し、「このテーマを選んだ理由」を1行足しました。</p>
+      </figcaption>
+    </figure>
+
+    <!-- ============ 4 ============ -->
+    <figure class="slide-row">
+      <div class="stage"><div class="slide">
+        <div class="b bar" style="--l:16.7;--t:17.5;--w:17.3;--h:1.5"></div>
+        <div class="b bar" style="--l:16.7;--t:22.4;--w:17.3;--h:1.5"></div>
+        <div class="b bar" style="--l:16.7;--t:27.3;--w:17.3;--h:1.5"></div>
+        <div class="b tri blue" style="--l:0;--t:30;--w:63.7;--h:63.7"></div>
+        <div class="b tri r green" style="--l:18;--t:46.3;--w:63.7;--h:63.7;opacity:.92"></div>
+        <div class="b tx title" style="--l:102.2;--t:31;--w:554.2;--h:72">Day1: ユーザリサーチ結果</div>
+        <div class="b tx" style="--l:102.2;--t:123.4;--w:554.2;--h:229.2"><span class="lab">FACT</span>　<span class="dim">公開情報で確認できたこと。出典URLを添える。</span>
+・
+
+<span class="lab">ASSUMPTION</span>　<span class="dim">AIや自分たちが補った、まだ確かめていないこと。</span>
+・
+
+<span class="lab">QUESTION</span>　<span class="dim">確かめられなかったこと。空欄にせず残す。</span>
+・
+
+<span class="lab">参照したURL:</span></div>
+        <div class="b num" style="--l:667.1;--t:367.2;--w:43.2;--h:31">4</div>
+      </div></div>
+      <figcaption>
+        <span class="sn">スライド 4</span><span class="day">Day1</span>
+        <p class="note changed"><b>修正4</b>　空欄だった本文を、第3回の用語である <b>FACT ／ ASSUMPTION ／ QUESTION</b> の3区画にしました。学生が直接の経験を持たない職種を扱うため、AIの出力をそのままFACTとして書かせないための枠です。第3回 p62「与えられた情報＝FACT、AIや自分たちが補った内容＝ASSUMPTION」と同じ区別を使っています。</p>
+      </figcaption>
+    </figure>
+
+    <!-- ============ 5 ============ -->
+    <figure class="slide-row">
+      <div class="stage"><div class="slide">
+        <div class="b bar" style="--l:16.7;--t:17.5;--w:17.3;--h:1.5"></div>
+        <div class="b bar" style="--l:16.7;--t:22.4;--w:17.3;--h:1.5"></div>
+        <div class="b bar" style="--l:16.7;--t:27.3;--w:17.3;--h:1.5"></div>
+        <div class="b tri blue" style="--l:0;--t:30;--w:63.7;--h:63.7"></div>
+        <div class="b tri r green" style="--l:18;--t:46.3;--w:63.7;--h:63.7;opacity:.92"></div>
+        <img class="b img rt-flip" style="--l:491.4;--t:0.4;--w:228.2;--h:211.9" src="assets/persona.jpg" alt="ペルソナ写真の記入例">
+        <div class="b cap" style="--l:491.4;--t:213;--w:220;--h:12">※写真は記入例</div>
+        <div class="b tx" style="--l:102.2;--t:37.2;--w:276.5;--h:25.3;--sz:10">ペルソナ 01</div>
+        <div class="b tx title" style="--l:102.2;--t:66.3;--w:441.7;--h:47.1">Day1: ペルソナ名</div>
+        <div class="b tx" style="--l:102.2;--t:123.4;--w:525.9;--h:254.4">1. 属性・役割:　<span class="dim">どんな仕事と責任を持つ人か</span>
+2. 行動:　<span class="dim">日々どう働き、誰と関わるか</span>
+3. 思考:　<span class="dim">何を考えているか</span>
+4. 目的・Need:　<span class="dim">何を達成したいか／何を避けたいか</span>
+5. 困りごと・制約:　<span class="dim">何に阻まれているか</span>
+
+<span class="dim">※ わかっていること（FACT）と、補った仮説（ASSUMPTION）を区別して書く。</span></div>
+        <div class="b ring" style="--l:266.8;--t:262.6;--w:51.7;--h:51.7"></div>
+        <div class="b num" style="--l:667.1;--t:367.2;--w:43.2;--h:31">5</div>
+      </div></div>
+      <figcaption>
+        <span class="sn">スライド 5</span><span class="day">Day1</span>
+        <p class="note changed"><b>修正5・6</b>　記入項目を<b>第5回の「Personaの基本フォーマット」5項目</b>（属性・役割／行動／思考／目的・Need／困りごと・制約）に差し替えました。元の「名前／年齢／家族構成／居住地／職業／趣味／性格／課題・ニーズ」は第5回の教え方と食い違い、仕事の課題を扱う今回に必要な「行動」「目的・Need」「困りごと・制約」が欠けていたためです。ストック写真には<b>「※写真は記入例」</b>を明示しました。</p>
+      </figcaption>
+    </figure>
+
+    <!-- ============ 6 ============ -->
+    <figure class="slide-row">
+      <div class="stage"><div class="slide">
+        <div class="b bar" style="--l:16.7;--t:17.5;--w:17.3;--h:1.5"></div>
+        <div class="b bar" style="--l:16.7;--t:22.4;--w:17.3;--h:1.5"></div>
+        <div class="b bar" style="--l:16.7;--t:27.3;--w:17.3;--h:1.5"></div>
+        <div class="b tri blue" style="--l:0;--t:30;--w:63.7;--h:63.7"></div>
+        <div class="b tri r green" style="--l:18;--t:46.3;--w:63.7;--h:63.7;opacity:.92"></div>
+        <div class="b tx title" style="--l:102.2;--t:31;--w:554.2;--h:72">Day1: 着目した課題</div>
+        <div class="b tx" style="--l:102.2;--t:123.4;--w:554.2;--h:229.2">顧客の課題やインサイト等を記入</div>
+        <div class="b num" style="--l:667.1;--t:367.2;--w:43.2;--h:31">6</div>
+      </div></div>
+      <figcaption>
+        <span class="sn">スライド 6</span><span class="day">Day1</span>
+        <p class="note same">変更なし。原文のままです。</p>
+      </figcaption>
+    </figure>
+
+    <!-- ============ 7 ============ -->
+    <figure class="slide-row">
+      <div class="stage"><div class="slide">
+        <div class="b bar" style="--l:16.7;--t:17.5;--w:17.3;--h:1.5"></div>
+        <div class="b bar" style="--l:16.7;--t:22.4;--w:17.3;--h:1.5"></div>
+        <div class="b bar" style="--l:16.7;--t:27.3;--w:17.3;--h:1.5"></div>
+        <div class="b tri blue" style="--l:0;--t:30;--w:63.7;--h:63.7"></div>
+        <div class="b tri r green" style="--l:18;--t:46.3;--w:63.7;--h:63.7;opacity:.92"></div>
+        <div class="b tx title" style="--l:102.2;--t:31;--w:554.2;--h:72">Day1: ソリューションアイディア</div>
+        <div class="b tx" style="--l:102.2;--t:123.4;--w:554.2;--h:229.2"><span class="lab">案の比較</span>　<span class="dim">User Value（この人の仕事がどう良くなる） ／ Originality ／ Feasibility</span>
+・案A:
+・案B:
+・案C:
+
+<span class="lab">選んだ案と、その理由</span>
+<span class="dim">このUSERが＿＿＿できるように、＿＿＿というSolutionを試したい。なぜなら＿＿＿。</span>
+
+<span class="lab">ビジネス価値</span>　<span class="dim">誰が使い／誰が対価を出し／何がどれだけ良くなるか</span></div>
+        <div class="b num" style="--l:667.1;--t:367.2;--w:43.2;--h:31">7</div>
+      </div></div>
+      <figcaption>
+        <span class="sn">スライド 7</span><span class="day">Day1</span>
+        <p class="note changed"><b>修正7</b>　末尾に残っていた不要な文字「s」を削除。<b>案の比較欄</b>を追加し、基準は第3回 p84 の <b>User Value / Originality / Feasibility</b> をそのまま使いました。選んだ案は第3回の SOLUTION HYPOTHESIS の形で1文にまとめます。ビジネス価値の<b>「(任意で)」を外し</b>、「誰が使い／誰が対価を出し／何がどれだけ良くなるか」の記入欄にしました（必須ではありませんが、全チームに可能な限り書いてもらう扱いです）。</p>
+      </figcaption>
+    </figure>
+
+    <!-- ============ 8 ============ -->
+    <figure class="slide-row">
+      <div class="stage"><div class="slide">
+        <div class="b bar" style="--l:16.7;--t:17.5;--w:17.3;--h:1.5"></div>
+        <div class="b bar" style="--l:16.7;--t:22.4;--w:17.3;--h:1.5"></div>
+        <div class="b bar" style="--l:16.7;--t:27.3;--w:17.3;--h:1.5"></div>
+        <div class="b tri blue" style="--l:0;--t:30;--w:63.7;--h:63.7"></div>
+        <div class="b tri r green" style="--l:18;--t:46.3;--w:63.7;--h:63.7;opacity:.92"></div>
+        <div class="b tx title" style="--l:102.2;--t:31;--w:554.2;--h:72">Day2: 要件定義</div>
+        <div class="b num" style="--l:667.1;--t:367.2;--w:43.2;--h:31">8</div>
+      </div></div>
+      <figcaption>
+        <span class="sn">スライド 8</span><span class="day">Day2</span>
+        <p class="note same">変更なし。原文どおり本文は空欄です。アウトライン v0.2 では「つくる範囲・主要な利用の流れ・受け入れ条件」を書く想定ですが、10節の修正リストに入れていないため手を付けていません。<b>記入欄を用意するかどうかはご判断ください。</b></p>
+      </figcaption>
+    </figure>
+
+    <!-- ============ 9 ============ -->
+    <figure class="slide-row">
+      <div class="stage"><div class="slide">
+        <div class="b bar" style="--l:16.7;--t:17.5;--w:17.3;--h:1.5"></div>
+        <div class="b bar" style="--l:16.7;--t:22.4;--w:17.3;--h:1.5"></div>
+        <div class="b bar" style="--l:16.7;--t:27.3;--w:17.3;--h:1.5"></div>
+        <div class="b tri blue" style="--l:0;--t:30;--w:63.7;--h:63.7"></div>
+        <div class="b tri r green" style="--l:18;--t:46.3;--w:63.7;--h:63.7;opacity:.92"></div>
+        <div class="b tx title" style="--l:102.2;--t:31;--w:554.2;--h:72">Day2: アーキテクチャ図</div>
+        <div class="b tx" style="--l:102.2;--t:123.4;--w:554.2;--h:229.2"><span class="dim">（図を貼る：主要な部品・責務・情報の流れ）</span>
+
+
+
+
+<span class="lab">技術選択の理由:</span>　<span class="dim">なぜその技術・構造を選んだか</span></div>
+        <div class="b num" style="--l:667.1;--t:367.2;--w:43.2;--h:31">9</div>
+      </div></div>
+      <figcaption>
+        <span class="sn">スライド 9</span><span class="day">Day2</span>
+        <p class="note changed"><b>修正8</b>　<b>「技術選択の理由」の欄を追加</b>しました。期末評価の観点5「テクノロジーを活用した問題解決手法の理解」に直接対応し、第4回でも提出物になっている項目ですが、元のテンプレートには書く場所がありませんでした。</p>
+      </figcaption>
+    </figure>
+
+    <!-- ============ 10 ============ -->
+    <figure class="slide-row">
+      <div class="stage"><div class="slide">
+        <div class="b bar" style="--l:16.7;--t:17.5;--w:17.3;--h:1.5"></div>
+        <div class="b bar" style="--l:16.7;--t:22.4;--w:17.3;--h:1.5"></div>
+        <div class="b bar" style="--l:16.7;--t:27.3;--w:17.3;--h:1.5"></div>
+        <div class="b tri blue" style="--l:0;--t:30;--w:63.7;--h:63.7"></div>
+        <div class="b tri r green" style="--l:18;--t:46.3;--w:63.7;--h:63.7;opacity:.92"></div>
+        <img class="b img" style="--l:465.2;--t:112.3;--w:183.6;--h:203.1" src="assets/prototype.jpg" alt="プロトタイプ画面の記入例">
+        <div class="b cap" style="--l:465.2;--t:316.5;--w:183.6;--h:12">※画面は記入例</div>
+        <div class="b tx title" style="--l:102.2;--t:31;--w:554.2;--h:72">Day2: プロトタイプ</div>
+        <div class="b tx" style="--l:102.2;--t:87.8;--w:441.7;--h:230;--sz:12">プロトタイプのリンク: https://codesandbox…
+生成AIとのやりとりリンク: https://chatgpt..
+
+実現できた機能
+・A　・B　・C
+
+実現できなかった機能
+<span class="dim">模擬した範囲（外部サービス・DB等）もここに書く</span>
+・X　・Y　・Z</div>
+        <div class="b num" style="--l:667.1;--t:367.2;--w:43.2;--h:31">10</div>
+      </div></div>
+      <figcaption>
+        <span class="sn">スライド 10</span><span class="day">Day2</span>
+        <p class="note changed"><b>修正9・10</b>　サンプル画像がオセロゲームのままなので <b>「※画面は記入例」</b> を明示しました（テーマと無関係なため、差し替えてもよいと思います）。「実現できなかった機能」に、<b>模擬した範囲（外部サービス・DB等）も書く</b>という一行を足しました。実装・模擬・未実装の区別は最終発表で説明してもらう項目です。</p>
+      </figcaption>
+    </figure>
+
+    <!-- ============ 11 ============ -->
+    <figure class="slide-row">
+      <div class="stage"><div class="slide">
+        <div class="b bar" style="--l:16.7;--t:17.5;--w:17.3;--h:1.5"></div>
+        <div class="b bar" style="--l:16.7;--t:22.4;--w:17.3;--h:1.5"></div>
+        <div class="b bar" style="--l:16.7;--t:27.3;--w:17.3;--h:1.5"></div>
+        <div class="b tri blue" style="--l:0;--t:30;--w:63.7;--h:63.7"></div>
+        <div class="b tri r green" style="--l:18;--t:46.3;--w:63.7;--h:63.7;opacity:.92"></div>
+        <div class="b tx title" style="--l:102.2;--t:31;--w:554.2;--h:72">感想と考察</div>
+        <div class="b tx" style="--l:102.2;--t:87.8;--w:500;--h:280;--sz:12"><span class="lab">確認して分かったこと</span>
+KEEP（残す）:
+CHANGE（変える）:
+QUESTION（まだ分からない）:
+
+<span class="lab">感想:</span>
+<span class="dim">ここに文章をかく。</span>
+
+<span class="lab">考察:</span>
+<span class="dim">ここに文章をかく。</span></div>
+        <div class="b num" style="--l:667.1;--t:367.2;--w:43.2;--h:31">11</div>
+      </div></div>
+      <figcaption>
+        <span class="sn">スライド 11</span><span class="day">Day2</span>
+        <p class="note changed"><b>修正11</b>　「感想／考察」の上に、第5回の <b>KEEP ／ CHANGE ／ QUESTION</b> で確認結果を書く欄を足しました。第5回では User Test の学びをこの3つに分けて整理しており、同じ枠を使えば「何を残し、何を変え、何がまだ分からないか」が成果物に残ります。</p>
+      </figcaption>
+    </figure>
+
+  </div>
+
+  <footer>
+    <p>出典：<code>2026/6_case_study_design_and_exercise/Solution Design With Technology.pptx</code>（11枚）／対応するアウトライン：<code>Solution_Design_2026_Lecture06-07_Outline_v0.2.md</code> 10節「成果物テンプレートの修正点」</p>
+    <p>再現にあたり、背景・配色・書体・各要素の座標と文字サイズは pptx の値をそのまま使っています。左上の三角マークなど一部の装飾図形は、PowerPoint の diagStripe をCSSの三角形で近似しているため、わずかに形が異なります。</p>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var b = document.getElementById('t');
+    b.addEventListener('click', function () {
+      var on = document.body.classList.toggle('clean');
+      b.textContent = on ? '変更メモを表示' : '変更メモを隠す';
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  })();
+</script>
+</body>
+</html>
