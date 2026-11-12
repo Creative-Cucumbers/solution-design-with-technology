@@ -27,6 +27,16 @@ def timeline(items):
 def agenda(period, rows, goal):
     assert sum(minutes for _, minutes, _ in rows) == 100
     return '<div class="s7-agenda"><aside><span>'+period+'限</span><b>100</b><small>MINUTES</small><p>'+goal+'</p></aside><ol>'+''.join('<li><strong>'+title+'</strong><span>'+detail+'</span><b>'+str(minutes)+'<small>分</small></b></li>' for title,minutes,detail in rows)+'</ol></div>'
+def work(do, minutes, steps, dest, also=''):
+    assert do and minutes and steps and len(steps)<=3 and len(dest)==2 and all(dest)
+    body='<ol class="s4-steps">'+''.join(f'<li><strong>{a}</strong><small>{b}</small></li>' for a,b in steps)+'</ol>'
+    return body
+
+def destination(dest, also=''):
+    name, detail=dest
+    cls=' template' if name.startswith('テンプレート') else ''
+    return f'<aside class="s7-dest{cls}"><small>書く場所・残す場所</small><strong>{name}</strong><span>{detail}</span><em>{also}</em></aside>'
+
 diagram_count=0
 def diagram(nodes,edges):
     # Fixed diagram canvas. Edge labels use a paper-colored halo for legibility.
@@ -106,6 +116,56 @@ slide('成果物と、<mark>判断の記録を届ける。</mark>',table(['提�
 slide('授業のあとも、<mark>一歩進めて確かめる。</mark>',split('① どちらかを選ぶ｜約3時間',['未実装の機能を一つ、条件を追加して実装', 'または確認例を増やし、壊れた箇所と修正を記録'],'② 全員が取り組む｜約2時間',['QUESTIONを一つ選び、検証方法を設計', '誰に何を聞く？ 何を観察する？ 実施は必須ではない']),section=10,target='homework',note='条件を追加するときはspec.mdとconstitution.mdも更新し、制約を変えたことを残す。')
 slide('つくった先に、<mark>次の問いがある。</mark>',split('今回確かめたこと',['動作・操作の理解・構成との一致', '観察したことと判断したことを区別'],'これから確かめること',['実際の仕事に合うか', '使い続けてもらえるか']),section=10,note='課題 → 解決策 → 設計 → 試作 → 確認 → 更新。最初の一周を、次へ。',target='homework')
 # Render all slide markup.
+# Explicit work instructions and destinations; numbers refer to the original 36 slides.
+work_specs = {
+4: ('準備を確認する','準備／導入中',('準備','手元の資料とIDEを確認する'),''),
+6: ('中間発表の指摘を3つに分ける','5分',('テンプレート 11','QUESTION欄へ未確認の問いを書く'),'KEEP・CHANGEと理由はメモにも残す'),
+7: ('操作する人と見る人を決める','5分',('口頭で決める','10分ごと、またはACが一つ通ったら交代する'),''),
+8: ('①〜⑥を、自分たちの言葉で埋める','8分',('絞り込みシート','前半①〜⑥'),'原本を手元に開く'),
+11: ('AIに整理させ、3点を確かめる','7分',('絞り込みシート','後半（原本）'),'要約をテンプレート8へ'),
+12: ('使い続ける障害を、2行で書く','整理の7分に含む',('絞り込みシート','末尾の2行'),'テンプレート11のQUESTIONへ'),
+13: ('要約を貼り、全文で仕様書をつくる','5分',('テンプレート 8','要件定義の要約を貼る'),'シート全文 → specs/内のspec.md'),
+14: ('2案を比べて、1案を選ぶ','5分',('メモ','構成案と比較・選択の理由'),'技術選択の理由はテンプレート9へ'),
+15: ('図を描かせ、AC1を指でたどる','5分',('テンプレート 9','構成図を貼る'),'編集できる.drawioファイルも保存'),
+16: ('技術選択の理由を3行で書く','2分',('テンプレート 9','技術・選んだ理由・採らなかったもの'),''),
+17: ('計画をつくり、読んでからタスクへ','約10分',('specs/','plan.md・tasks.md'),'開発50分の内訳の目安'),
+18: ('AC1だけ実装させ、自分で動かす','約40分',('コード','シートの確認例で自分たちが動作確認'),'完成後、テンプレート10に共有情報'),
+23: ('他チームが触れる状態にする','15分',('テンプレート 10','プロトタイプの共有情報'),'ローカル実行ならZIPの共有リンクと起動手順'),
+24: ('相手に操作してもらい、記録する','10分',('相互確認シート','つくったチームが行動と言葉を記録'),'5分ずつ交代する'),
+28: ('直す1〜2件と、直さない理由を決める','3分',('相互確認シート','下部：対応方針と理由'),'テンプレート11へ転記'),
+29: ('直して、同じ操作をもう一度試す','7分',('テンプレート 11','修正・再確認の結果と直さなかった理由'),'最後の2分は変更せず、通し確認'),
+30: ('テンプレートを埋め、デモを通す','15分',('テンプレート 10・11','実現・未実装・観察・判断・対応'),'構成図9とビジネス価値7も更新'),
+32: ('3点を自分の言葉で書く','5分',('Slack 個人投稿','判断の変化・貢献・次の問い'),'テンプレートではなく、全員が個別に提出'),
+}
+questions=[('① 今回確かめたいこと','この試作で、何が分かれば一歩前に進む？'),('② 今回扱う場面','誰が、いつ、何をする場面だけをつくる？'),('③ 最後にできてほしいこと','操作が終わったとき、何が分かる・できる？'),('④ 小さくする方法','人・画面・データ・処理を、どう減らす？'),('⑤ 今回の線引き','実際につくる／代わりの方法で試す／今回は扱わない、のどれ？'),('⑥ 合格の確かめ方','何を操作して、どうなれば予定どおり？')]
+slides[7]['content']=table(['考える欄','問い'],questions)
+slides[11]['content']=sheet([('障害は？','この人が使い続けるうえで、いちばん気になる障害は？'),('次の確認は？','今回確かめられる範囲と、実ユーザーに確かめたいことは？')],'')
+slides[15]['content']=work('技術選択の理由を3行で書く','2分',[('選んだ技術','何を使い、どう組み合わせる？'),('選んだ理由','採用した条件にどう合う？'),('採らなかったもの','何を採らず、なぜそう判断した？')],('テンプレート 9','選択理由'))
+slides[8]['title']='④⑤で迷ったら、<mark>目的から決める。</mark>'
+slides[26]['content']=slides[26]['content'].replace('順番','相互確認シートの1→2→3→4')
+slides[1]['content']+='<div class="s7-goal-strip">今日埋める：成果物テンプレート <b>8 → 9 → 10 → 11</b></div>'
+for original, destinations in [(3,['準備','テンプレート8','テンプレート9','コード → 10','シート・仕様書']), (22,['テンプレート10','相互確認シート','テンプレート11','テンプレート10・11','発表','Slack個人投稿','時間調整'])]:
+    values=iter(destinations)
+    slides[original-1]['content']=re.sub(r'</li>',lambda m:'<em class="s7-agenda-dest">'+next(values)+'</em></li>',slides[original-1]['content'])
+for n,d in enumerate(slides,1):
+    d['tag']='困ったら' if n in (19,20,21) else '説明'
+    if n in work_specs:
+        do,minutes,dest,also=work_specs[n]
+        work(do, minutes, [('確認', '内容と記録先を確認する')], dest, also)
+        d.update(do=do,minutes=minutes,dest=dest,also=also,tag='WORK')
+        d['note']='採用する内容と理由は、チームで判断しよう。'
+        # Existing exercise body is retained; the shared frame owns its clock and destination.
+        d['content']=re.sub(r'<div class="s4-clock">.*?</div>','',d['content'],flags=re.S)
+        d['content']=re.sub(r'<div class="s4-output">.*?</div>','',d['content'],flags=re.S)
+    elif n==21:
+        d.update(dest=('テンプレート 8・10','変更・未実装とその理由'),also='シート・spec・plan・tasksも揃える')
+        d['note']='流れを残した簡略化で、確かめたい価値を守ろう。'
+    elif n!=1:
+        d['note']=''
+# Keep the constraints explanation immediately before the acceptance-condition example.
+constraints=slides.pop(4); slides.insert(8,constraints)
+map_slide=dict(title='今日の<mark>成果物マップ。</mark>',content=table(['作業の記録（原本）','成果物テンプレートへ'],[['絞り込みシート 前半①〜⑥ → 後半AC','8：要件定義（要約）'],['構成2案を比較 → draw.ioの図・技術選択','9：構成図と選んだ理由'],['コード・共有情報・落とした機能','10：プロトタイプ・実現／未実装'],['相互確認シート → 対応・再確認','11：観察・解釈・判断・次の問い'],['specs/内のspec → plan → tasks','シート全文から生成。実装と一致させる']]),kind='',section=1,note='',eyebrow='LECTURE 07 / OUTPUT MAP',tag='説明',target='record-map')
+slides.insert(2,map_slide)
 header='<header class="identity"><div>KYOTO UNIVERSITY OF THE ARTS<br>Department of Information Design</div><span class="identity-line"></span><div>Solution Design with Technology<br>2026 Spring</div></header>'
 footer='<footer class="identity-bottom">PEOPLE<br>TECHNOLOGY<br>IDEAS<br>FOR A BETTER TOMORROW.</footer>'
 total=len(slides); sections=[]
@@ -113,8 +173,15 @@ for i,d in enumerate(slides,1):
     title=re.sub('<[^>]+>','',d['title']).replace('&','＆')
     content=d['content'] if d['kind'] in ('chapter','cover') else '<div class="s4-content">'+d['content']+'</div>'
     note='<div class="takeaway">'+d['note']+'</div>' if d['note'] else ''
+    if d.get('tag') and d['kind']!='cover':
+        content+='<span class="s7-tag">'+d['tag']+'</span>'
+    if d.get('do'):
+        content+='<div class="s7-do">やること：'+d['do']+'</div><div class="s7-time">'+d['minutes']+'</div>'
+        content+='<div class="s7-progress">'+''.join('<span class="'+('active' if str(n) in (d['dest'][0]+d['also']) else '')+'">'+str(n)+'</span>' for n in (8,9,10,11))+'</div>'
+    if d.get('dest'): content+=destination(d['dest'],d.get('also',''))
+
     target=d.get('target') or f'section-{d["section"]}'
-    sections.append(f'<section class="slide s4 s4-{d["kind"]}" data-title="{esc(title,quote=True)}" aria-label="{i}：{esc(title,quote=True)}"'+(' hidden' if i>1 else '')+'>'+header+f'<div class="page-tag">{i:02d} / {total}</div><div class="eyebrow">{d["eyebrow"]}</div><h1>{d["title"]}</h1>'+content+note+footer+f'<div class="s4-foot"><span>LECTURE 07 · {"3限" if d["section"]<5 else "4限"}</span><a href="workbook.html#{target}" target="_blank" rel="noopener">資料・プロンプト ↗</a></div></section>')
+    sections.append(f'<section class="slide s4 s4-{d["kind"]}{" s7-work" if d.get("do") else ""}" data-title="{esc(title,quote=True)}" aria-label="{i}：{esc(title,quote=True)}"'+(' hidden' if i>1 else '')+'>'+header+f'<div class="page-tag">{i:02d} / {total}</div><div class="eyebrow">{d["eyebrow"]}</div><h1>{d["title"]}</h1>'+content+note+footer+f'<div class="s4-foot"><span>LECTURE 07 · {"3限" if d["section"]<5 else "4限"}</span><a href="workbook.html#{target}" target="_blank" rel="noopener">資料・プロンプト ↗</a></div></section>')
 nav=f'<nav aria-label="スライド操作"><button id="prev" aria-label="前のスライド">← 前へ</button><label><input id="page" type="number" min="1" max="{total}" value="1" aria-label="スライド番号"> / {total}</label><button id="next" aria-label="次のスライド">次へ →</button><button id="fullscreen">全画面</button><a href="workbook.html">資料</a><span class="help">← → / Space：移動 · F：全画面 · H：操作バー</span></nav>'
 (ROOT/'index.html').write_text('<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第7回 ケーススタディ：ソリューショニングと成果発表</title><link rel="stylesheet" href="styles.css"></head><body><main id="stage" aria-label="第7回の講義スライド"><div id="deck">'+ '\n'.join(sections)+'</div></main>'+nav+'<span id="status" class="sr-only" aria-live="polite"></span><noscript>JavaScriptを有効にしてください。</noscript><script src="viewer.js"></script></body></html>')
 # Browser-readable course material; safe local markdown subset. Exact code blocks stay copyable.

@@ -1,6 +1,6 @@
 # ケーススタディ: ソリューショニングと成果発表
 
-[講義スライド（36枚）](https://creative-cucumbers.github.io/solution-design-with-technology/2026/7_case_study_solutioning_and_presentation/slides/index.html) ／ [資料・コピー用プロンプト](https://creative-cucumbers.github.io/solution-design-with-technology/2026/7_case_study_solutioning_and_presentation/slides/workbook.html)
+[講義スライド（37枚）](https://creative-cucumbers.github.io/solution-design-with-technology/2026/7_case_study_solutioning_and_presentation/slides/index.html) ／ [資料・コピー用プロンプト](https://creative-cucumbers.github.io/solution-design-with-technology/2026/7_case_study_solutioning_and_presentation/slides/workbook.html)
 
 [成果物テンプレート](https://creative-cucumbers.github.io/solution-design-with-technology/2026/6_case_study_design_and_exercise/template-review/index.html) ／ [絞り込みシートとプロンプト集](./handout/scope-and-spec.md) ／ [相互確認シート](./handout/review-sheet.md)
 
@@ -152,6 +152,31 @@
 - 3人チームは、見ている人のうち1人が**確認結果を書き留める**と、あとの作業が楽になります
 
 ---
+
+## 記録先の対応表
+
+<a id="record-map"></a>
+
+準備確認は導入中に行います。計画約10分・実装約40分は開発50分の内訳の目安です。障害の2行は整理7分に含みます。
+
+| ワーク | 節 | 時間 | 記録先 | 転記先 |
+| --- | --- | --- | --- | --- |
+| 指摘の仕分け | 1.4 | 5分 | メモ | QUESTION → テンプレ 11 |
+| 絞り込み 前半 ①〜⑥ | 2.2 | 8分 | 絞り込みシート 前半 | — |
+| AIで整理・確認 | 2.4 | 7分 | 絞り込みシート 後半（原本） | 要約 → テンプレ 8 |
+| 使い続ける障害 | 2.5 | （2.4に含む） | 絞り込みシート 末尾 | テンプレ 11 QUESTION |
+| 仕様書 | 2.7 | 5分 | specs/spec.md | — |
+| 構成2案 | 3.1 | 5分 | メモ | — |
+| 図 | 3.2 | 5分 | .drawio | テンプレ 9 |
+| 技術選択の理由 | 3.3 | 2分 | テンプレ 9 | — |
+| 計画・タスク | 4.1 | 約10分 | specs/plan.md, tasks.md | — |
+| 実装 | 4.2 | 約40分 | コード | リンク → テンプレ 10 |
+| 範囲を削った記録 | 4.5 | 随時 | シート・spec | テンプレ 8・10 |
+| 仕上げ | 5 | 15分 | コード | テンプレ 10 |
+| 相互確認 | 6 | 10分 | 相互確認シート | — |
+| 対応を決める・直す | 7 | 10分 | 相互確認シート 下部 | テンプレ 11 |
+| 発表準備 | 8 | 15分 | テンプレ 10・11（9・7 更新） | — |
+| 個人の振り返り | 10 | 5分 | Slack 個人投稿 | — |
 
 ## 2. 受け入れ条件を絞り、仕様書にする (20分)
 
